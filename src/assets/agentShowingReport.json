@@ -1,0 +1,129 @@
+{
+    "confirmShowing": [
+        {
+            "rowId": null,
+            "appointmentId": null,
+            "mlsNumber": "52364792",
+            "fullAddress": "2109 Clip Stone Court, Conroe TX 77328",
+            "thumbnailUrl": null,
+            "price": 284595.0,
+            "propertyStatus": "Active",
+            "listAgentMlsId": "guzman01",
+            "listAgentFullName": "Matthew Guzman"
+        },
+        {
+            "rowId": null,
+            "appointmentId": null,
+            "mlsNumber": "52364792",
+            "fullAddress": "2109 Clip Stone Court, Conroe TX 77328",
+            "thumbnailUrl": null,
+            "price": 284595.0,
+            "propertyStatus": "Active",
+            "listAgentMlsId": "guzman01",
+            "listAgentFullName": "Matthew Guzman"
+        },
+        {
+            "rowId": null,
+            "appointmentId": null,
+            "mlsNumber": "52364792",
+            "fullAddress": "2109 Clip Stone Court, Conroe TX 77328",
+            "thumbnailUrl": null,
+            "price": 284595.0,
+            "propertyStatus": "Active",
+            "listAgentMlsId": "guzman01",
+            "listAgentFullName": "Matthew Guzman"
+        },
+        {
+            "rowId": null,
+            "appointmentId": null,
+            "mlsNumber": "52364792",
+            "fullAddress": "2109 Clip Stone Court, Conroe TX 77328",
+            "thumbnailUrl": null,
+            "price": 283190.0,
+            "propertyStatus": "Active",
+            "listAgentMlsId": "guzman01",
+            "listAgentFullName": "Matthew Guzman"
+        }
+    ],
+    "requestedShowing": [
+        {
+            "rowId": null,
+            "appointmentId": null,
+            "mlsNumber": "52364792",
+            "fullAddress": "2109 Clip Stone Court, Conroe TX 77328",
+            "thumbnailUrl": null,
+            "price": 284595.0,
+            "propertyStatus": "Active",
+            "listAgentMlsId": "guzman01",
+            "listAgentFullName": "Matthew Guzman"
+        },
+        {
+            "rowId": null,
+            "appointmentId": null,
+            "mlsNumber": "52364792",
+            "fullAddress": "2109 Clip Stone Court, Conroe TX 77328",
+            "thumbnailUrl": null,
+            "price": 283190.0,
+            "propertyStatus": "Active",
+            "listAgentMlsId": "guzman01",
+            "listAgentFullName": "Matthew Guzman"
+        },
+        {
+            "rowId": null,
+            "appointmentId": null,
+            "mlsNumber": "87346202",
+            "fullAddress": "5300 Palmetto Street, Houston TX 77081",
+            "thumbnailUrl": null,
+            "price": 375000.0,
+            "propertyStatus": "Active",
+            "listAgentMlsId": "WILSONNO",
+            "listAgentFullName": "Norman Ray Wilson"
+        },
+        {
+            "rowId": null,
+            "appointmentId": null,
+            "mlsNumber": "87346202",
+            "fullAddress": "5300 Palmetto Street, Houston TX 77081",
+            "thumbnailUrl": null,
+            "price": 375000.0,
+            "propertyStatus": "Active",
+            "listAgentMlsId": "WILSONNO",
+            "listAgentFullName": "Norman Ray Wilson"
+        },
+        {
+            "rowId": null,
+            "appointmentId": null,
+            "mlsNumber": "87346202",
+            "fullAddress": "5300 Palmetto Street, Houston TX 77081",
+            "thumbnailUrl": null,
+            "price": 375000.0,
+            "propertyStatus": "Active",
+            "listAgentMlsId": "WILSONNO",
+            "listAgentFullName": "Norman Ray Wilson"
+        },
+        {
+            "rowId": null,
+            "appointmentId": null,
+            "mlsNumber": "87346202",
+            "fullAddress": "5300 Palmetto Street, Houston TX 77081",
+            "thumbnailUrl": null,
+            "price": 375000.0,
+            "propertyStatus": "Active",
+            "listAgentMlsId": "WILSONNO",
+            "listAgentFullName": "Norman Ray Wilson"
+        }
+    ],
+    "cancelShowing": [
+        {
+            "rowId": null,
+            "appointmentId": null,
+            "mlsNumber": "52364792",
+            "fullAddress": "2109 Clip Stone Court, Conroe TX 77328",
+            "thumbnailUrl": null,
+            "price": 284595.0,
+            "propertyStatus": "Active",
+            "listAgentMlsId": "guzman01",
+            "listAgentFullName": "Matthew Guzman"
+        }
+    ]
+}

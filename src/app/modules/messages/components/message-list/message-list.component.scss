@@ -1,0 +1,23 @@
+:host ::ng-deep {
+  .p-orderlist-list {
+    height: 78vh;
+  }
+  .message-list .p-orderlist-controls {
+    display: none;
+  }
+  .p-orderlist-filter-container {
+    display: none;
+  }
+
+  .search-user-chat .p-inputtext{
+    width: 295px;
+  }
+}
+
+
+:host ::ng-deep {
+  .message-list .p-orderlist-item {
+    border: solid rgba(0, 0, 0, 0.12);
+    border-width: 0 0 1px 0;
+  }
+}

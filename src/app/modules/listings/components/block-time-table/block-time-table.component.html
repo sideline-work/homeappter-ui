@@ -1,0 +1,26 @@
+<app-table
+  [table]="table"
+  [denseCell]="true"
+>
+<ng-template #dateTemplate let-row="row">
+  <td>
+    <span>{{row?.startDate | date : "MMM dd, yyyy"}}</span> - <span>{{row?.endDate | date : "MMM dd, yyyy"}}</span>
+  </td>
+</ng-template>
+<ng-template #timeTemplate let-row="row">
+  <td>
+    <span>{{row?.startDateTime | date: 'shortTime'}}</span> -
+    <span>{{row?.endDateTime | date: 'shortTime'}}</span>
+  </td>
+</ng-template>
+<ng-template #editDeleteTemplate let-row="row">
+  <td>
+    <button mat-icon-button color="primary" (click)="onDelete(row)">
+      <mat-icon>delete</mat-icon>
+    </button>
+    <button mat-icon-button color="primary" (click)="onEdit(row)">
+      <mat-icon>edit</mat-icon>
+    </button>
+  </td>
+</ng-template>
+</app-table>

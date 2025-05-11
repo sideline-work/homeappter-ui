@@ -1,0 +1,15 @@
+.listing-image-instruction {
+  width: 180px;
+  height: 100px;
+}
+
+
+:host ::ng-deep {
+
+  .listing-instruction-info {
+    .p-card-content {
+      padding: 0px;
+    }
+  }
+
+}

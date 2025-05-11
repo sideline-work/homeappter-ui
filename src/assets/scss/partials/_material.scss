@@ -1,0 +1,55 @@
+@import 'partials/_variables';
+
+:host ::ng-deep {
+  .mat-card.mat-card-primary-background{
+    background-color: $primaryColor;
+    box-shadow: none !important;
+  }
+}
+
+:host ::ng-deep {
+  .mat-card-header.mat-card-primary-background {
+    background-color: $primaryColor;
+  }
+}
+
+.mat-card-primary-background .mat-card-image {
+  background-color: $primaryColor;
+}
+
+:host ::ng-deep {
+  .mat-menu-item-medium {
+    .mat-menu-item {
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      cursor: pointer;
+      outline: 0;
+      border: none;
+      -webkit-tap-highlight-color: transparent;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: block;
+      /** set line height to desired height */
+      line-height: 18px;
+      /** set height to auto */
+      height: auto;
+      padding: 0 0px;
+      text-align: left;
+      text-decoration: none;
+      max-width: 100%;
+      position: relative;
+    }
+  }
+}
+
+
+.mat-icon-label-space {
+  margin-right: 0.4rem;
+}
+
+.mat-icon-default {
+  color: rgba(0,0,0,.54);
+}

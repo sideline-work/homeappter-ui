@@ -1,0 +1,23 @@
+@import 'partials/_variables';
+@import 'partials/_material';
+
+.app-logo {
+  height: 50px;
+  display: flex;
+  width: 174px;
+  margin: 0px;
+  padding: 0px;
+}
+
+.app-logo  img{
+  height: 45px;
+  width: 190px;
+}
+
+.header-container {
+  height:$homeHeaderHeight;
+}
+
+.header-spacer {
+  flex: 1 1 auto;
+}

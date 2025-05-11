@@ -1,0 +1,28 @@
+<app-site-header></app-site-header>
+<div class="p-px-6 p-pt-3">
+  <p class="mat-title p-pb-3">Feedback</p>
+  <div class="p-fluid p-pb-2" *ngFor="let question of questions; let i = index">
+    <div class="p-field">
+        <label>{{i + 1}}.  {{question?.question}}</label>
+        <div *ngIf="question?.type == 'input'; else dropdown">
+          <input id="id_{{i + 1}}" type="text" pInputText>
+        </div>
+        <ng-template #dropdown>
+          <p-dropdown [options]="question?.options" placeholder="Select an asnwer">
+            <ng-template let-item pTemplate="selectedItem">
+              {{item}}
+            </ng-template>
+            <ng-template let-item pTemplate="item">
+              {{item}}
+            </ng-template>
+          </p-dropdown>
+        </ng-template>
+      </div>
+  </div>
+  <div fxLayout="column" fxLayoutAlign="center center" >
+    <button pButton type="button" label="Submit" (click)="onSubmitFeedback()" class="p-mt-2" [disabled]="feedbackQuestionsForm?.invalid"></button>
+  </div>
+  <!-- <button pButton type="button" label="Cancel" (click)="onCancel()"></button> -->
+</div>
+<app-dialog></app-dialog>
+<app-alert [alertKey]="alertKey"></app-alert>

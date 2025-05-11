@@ -1,0 +1,9 @@
+.form-group-wrapper {
+  padding: 0px 9px;
+
+  // used to fix bug in textarea in modal (no initial height for the textarea)
+  // .modal-textarea {
+  //   height: auto !important;
+  //   overflow-y: auto !important;
+  // }
+}

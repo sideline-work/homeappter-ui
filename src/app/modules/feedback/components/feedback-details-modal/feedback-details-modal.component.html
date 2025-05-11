@@ -1,0 +1,18 @@
+<app-modal [header]="'Feedback'" [styleClass]="'modal-lg'" [minWidth]="'60vw'">
+  <div fxLayout="column" fxLayoutAlign="space-around stretch" >
+    <!-- <app-add-new-listing-form [formGroupValue]="addNewListingForm"></app-add-new-listing-form> -->
+    <app-feedback-listing-summary
+      [feedbackAppointmentInfo]="feedbackAppointmentInfo"
+    ></app-feedback-listing-summary>
+    <div class="p-p-2 p-mt-3">
+      <app-table
+        [table]="table"
+        [dense]="true"
+        [sortMode]="null"
+      ></app-table>
+    </div>
+  </div>
+  <ng-template #modalFooter>
+    <button mat-raised-button color="primary" mat-dialog-close>OK</button>
+  </ng-template>
+</app-modal>

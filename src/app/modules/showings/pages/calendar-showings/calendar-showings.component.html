@@ -1,0 +1,11 @@
+<div fxFill fxLayout="row" fxLayoutAlign="start start" >
+  <div  fxLayout="column" fxLayoutAlign="start center">
+    <app-showing-calendar-filter></app-showing-calendar-filter>
+  </div>
+  <div fxLayout="column" fxLayoutAlign="start center">
+    <app-showing-calendar></app-showing-calendar>
+  </div>
+</div>
+<!-- Router outlet for showing details Modal-->
+<router-outlet></router-outlet>
+<app-alert [alertKey]="alertKey"></app-alert>

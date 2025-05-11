@@ -1,0 +1,12 @@
+<p-dataView #dv [value]="notificationss" layout="list" styleClass="notification-data-view" emptyMessage="No Notifications">
+  <ng-template pTemplate="header">
+    <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between">
+        Notifications
+    </div>
+  </ng-template>
+  <ng-template let-item pTemplate="listItem">
+    <div class="p-col-12 p-md-12 p-p-0">
+      <app-notification-item [notification]="item"></app-notification-item>
+    </div>
+  </ng-template>
+</p-dataView>

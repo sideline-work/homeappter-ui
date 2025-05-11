@@ -1,0 +1,7 @@
+export enum RequestStatus {
+  OPEN = "OPEN",
+  INPROGRESS = "INPROGRESS",
+  UPDATE_NEEDED = "UPDATE_NEEDED",
+  CANCELLED = "CANCELLED",
+  CLOSED = "CLOSED",
+}

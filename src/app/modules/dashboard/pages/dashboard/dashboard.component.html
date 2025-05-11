@@ -1,0 +1,4 @@
+<app-dashboard-admin *ngIf="(ROLES.ADMIN | hasRole)"></app-dashboard-admin>
+<app-dashboard-user *ngIf="(ROLES.MEMBER | hasRole)" #dashboarduser></app-dashboard-user>
+<router-outlet></router-outlet>
+<app-alert [alertKey]="alertKey"></app-alert>

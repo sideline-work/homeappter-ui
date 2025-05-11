@@ -1,0 +1,37 @@
+@import 'partials/_variables';
+
+:host ::ng-deep {
+  .requested-background {
+    .p-chip {
+      background-color:#8080ff ;
+      color: white;
+    }
+  }
+
+  .confirmed-background {
+    .p-chip {
+      background-color:#39ac73 ;
+      color: white;
+    }
+  }
+
+  .cancelled-background{
+    .p-chip {
+      background-color: #ff6666;
+      color: white;
+    }
+  }
+
+
+  .showing-instruction-chip-checked {
+    .p-chip {
+      background-color: $primaryColor;
+      color: white;
+    }
+  }
+
+
+
+
+
+}

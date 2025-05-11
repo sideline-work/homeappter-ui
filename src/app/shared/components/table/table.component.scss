@@ -1,0 +1,38 @@
+:host ::ng-deep {
+  .p-datatable-flex-scrollable,
+  .p-datatable-flex-scrollable .p-datatable-scrollable-view,
+  .p-datatable-flex-scrollable .p-datatable-scrollable-wrapper {
+    min-height: 100%;
+  }
+
+  .p-datatable-scrollable-body {
+    overflow-y: scroll;
+  }
+
+  .pi-sort-alt {
+    display: none;
+  }
+
+  .report-table .p-paginator-bottom {
+    padding: 10px 0 10px 0;
+  }
+
+  .p-datatable .p-datatable-header {
+    background: #6f7fd9;
+    border: 1px solid #e4e4e4;
+    border-width: 1px 0 1px 0;
+    color: white;
+  }
+
+  .dense-table-body .p-datatable-tbody {
+    tr {
+      line-height: 12px;
+    }
+  }
+  .dense-cell .p-datatable-tbody {
+    td {
+      padding: 0.5rem 0.5rem;
+    }
+  }
+
+}

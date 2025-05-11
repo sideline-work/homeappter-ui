@@ -1,0 +1,31 @@
+<form [formGroup]="searchForm">
+  <div class="p-grid p-jc-center search-listing-filter">
+    <div class="p-col-12 p-md-8">
+      <input
+        id="searchKeyword"
+        type="text"
+        pInputText
+        placeholder="Enter MLS #,  Address,  Agent Id"
+        class="form-control"
+        formControlName="keyword"
+        pTooltip="{{ f['keyword'].errors | formErrors: 'keyword'}}"
+        tooltipStyleClass="error-tooltip"
+        [tooltipDisabled]="!(f['keyword'].invalid && f['keyword'].touched)"
+        [class.has-error]="f['keyword'].invalid && f['keyword'].touched"
+      >
+    </div>
+    <div class="p-col-8 p-md-3">
+      <p-dropdown
+        [options]="searchListingFilterModes"
+        formControlName="filter"
+        placeholder="Filter by Status"
+        appendTo="body"
+        class="form-control">
+      </p-dropdown>
+    </div>
+    <div class="p-col-4 p-md-1">
+      <button pButton type="button" label="Search" (click)="onClickSearch()" [disabled]="searchForm.invalid"></button>
+    </div>
+  </div>
+</form>
+

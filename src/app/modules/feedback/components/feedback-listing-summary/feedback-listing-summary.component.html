@@ -1,0 +1,58 @@
+<p-card class="p-mt-0 listing-instruction-info">
+  <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="start start" class="p-px-3" fxLayoutGap="15px">
+    <img mat-card-image [src]="feedbackAppointmentInfo?.appointmentInfo?.thumbnailUrl" class="listing-image-instruction p-mt-1 p-mr-4" appImgFallback="assets/images/no-image.png">
+    <div fxLayout="column" fxFlex="65" fxLayoutAlign="start center" fxLayoutGap="0px">
+      <p class="">
+        Feedback for the showing of
+      </p>
+      <p class="mat-h3 p-text-bold">
+        {{feedbackAppointmentInfo?.appointmentInfo?.fullAddress}}
+      </p>
+      <p class="mat-h3">
+        on
+      </p>
+      <p>
+        <span class="mat-h4 p-text-bold">
+          {{feedbackAppointmentInfo?.appointmentInfo?.date | date : 'MMMM d, yyyy'}}
+        </span>
+        <span>
+           from
+        </span>
+        <span class="mat-h4 p-text-bold">
+          {{getDate(feedbackAppointmentInfo?.appointmentInfo?.date, feedbackAppointmentInfo?.appointmentInfo?.startTime) | date : 'h:mm a'}} -
+          {{getDate(feedbackAppointmentInfo?.appointmentInfo?.date, feedbackAppointmentInfo?.appointmentInfo?.endTime) | date : 'h:mm a'}}
+        </span>
+      </p>
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+  <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="start start" class="p-px-5 p-pt-3" fxLayoutGap="0px">
+    <div fxLayout="column" fxFlex="55" fxLayoutGap="0px">
+      <p class="mat-h4">
+        <span class="p-text-bold">MLS Number: </span>
+        {{feedbackAppointmentInfo?.mlsNumber}}
+      </p>
+      <p class="mat-h4">
+        <span class="p-text-bold">Listing Id:  </span>
+        {{feedbackAppointmentInfo?.appointmentInfo?.listingId}}
+      </p>
+      <p class="mat-h4">
+        <span class="p-text-bold">Office:  </span>
+        {{feedbackAppointmentInfo?.appointmentInfo?.office}}
+      </p>
+    </div>
+    <div fxLayout="column" fxFlex="45" fxLayoutGap="0px">
+      <p class="mat-h4">
+        <span class="p-text-bold">Listing Agent:  </span>
+        {{feedbackAppointmentInfo?.appointmentInfo?.listingAgent}}
+      </p>
+      <p class="mat-h4">
+        <span class="p-text-bold">Agent Email:  </span>
+        {{feedbackAppointmentInfo?.appointmentInfo?.agentEmail}}
+      </p>
+    </div>
+    <!-- <div fxLayout="column" fxFlex="20">
+      <p class="mat-h3 p-mt-1 p-text-bold">{{feedbackAppointmentInfo?.appointmentInfo?.price | currency}}</p>
+    </div> -->
+  </div>
+</p-card>

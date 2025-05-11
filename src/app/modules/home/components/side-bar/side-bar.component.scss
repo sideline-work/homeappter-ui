@@ -1,0 +1,70 @@
+@import 'partials/_variables';
+
+:host ::ng-deep {
+  .sidebar-container {
+    .p-panelmenu {
+      width: 100%;
+    }
+    .p-panelmenu .p-panelmenu-header > a {
+      padding: 1rem;
+    }
+    .p-panelmenu .p-menuitem > a {
+      padding: 1rem;
+      margin-left: 0.8rem;
+    }
+
+    .p-menuitem-text {
+      min-width: 100px;
+    }
+
+    .p-panelmenu .p-panelmenu-content {
+      padding: 0px;
+    }
+
+    .p-panelmenu-header-link {
+      background-color: $sideNavColor;
+      color: $sideNavTextColor;
+    }
+
+    .p-panelmenu .p-panelmenu-panel:first-child .p-panelmenu-header > a {
+      border-top-right-radius: 0px;
+      border-top-left-radius: 0px;
+    }
+
+    .p-panelmenu .p-panelmenu-panel:last-child {
+      box-shadow: 0px -0.3px 0px 0px rgb(0 0 0 / 20%);
+    }
+
+    .p-panelmenu .p-panelmenu-panel .p-panelmenu-content {
+      background-color: $sideNavColor;
+    }
+
+    .p-panelmenu .p-panelmenu-content .p-menuitem .p-menuitem-link .p-menuitem-icon {
+      color: $sideNavTextColor !important;
+    }
+
+    .p-panelmenu .p-panelmenu-content .p-menuitem .p-menuitem-link .p-menuitem-text {
+      color: $sideNavTextColor;
+    }
+
+    .p-panelmenu .p-panelmenu-header.p-highlight > a {
+      background: $sideNavSelectedColor;
+      color: $sideNavTextSelectedColor;
+    }
+
+    .panel-menu-chip {
+      font-size: 12px;
+      text-align: center;
+      font-weight: bold;
+      padding: 4px;
+      background-color: #e8685f;
+      color: white;
+    }
+
+    .panel-menu-label {
+      margin: 0px;
+      margin-right: 6px;
+    }
+
+  }
+}

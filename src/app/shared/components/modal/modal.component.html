@@ -1,0 +1,12 @@
+<h2 mat-dialog-title>{{header}}</h2>
+<mat-dialog-content [ngStyle]="{'min-height': minHeight, 'min-width': minWidth}">
+  <ng-content></ng-content>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <ng-container
+    *ngTemplateOutlet="
+      getTemplate('modalFooter');
+    "
+  ></ng-container>
+</mat-dialog-actions>
+

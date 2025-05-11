@@ -1,0 +1,9 @@
+@import 'partials/_variables';
+
+.profile-page {
+  min-height: calc(#{$homeBodyHeight} - 120px);
+}
+
+.profile-details{
+  width: 85%;
+}

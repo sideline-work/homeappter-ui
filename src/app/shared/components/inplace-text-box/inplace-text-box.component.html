@@ -1,0 +1,8 @@
+<p-inplace [closable]="closable" [preventClick]="!editable" styleClass="form-control">
+  <ng-template pTemplate="display">
+    {{displayText}}
+  </ng-template>
+  <ng-template pTemplate="content">
+      <input type="text" value="PrimeNG" [formControlName]="formControlNameValue" pInputText>
+  </ng-template>
+</p-inplace>

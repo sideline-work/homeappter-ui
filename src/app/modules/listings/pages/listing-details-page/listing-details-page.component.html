@@ -1,0 +1,31 @@
+<p-sidebar
+  [(visible)]="visible"
+  position="right"
+  [style]="{width:'80vw'}"
+  appendTo="body"
+  [showCloseIcon]="false"
+  [dismissible]="false"
+  (onHide)="onHide()"
+  [blockScroll]="true"
+  [baseZIndex]="10000"
+  styleClass="listing-page-sidebar">
+  <div fxLayout="row" fxLayoutAlign="space-between center"  class="p-px-3">
+    <h2 class="mat-title ">Listing Details</h2>
+    <div align="end" class="p-mb-4">
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="scheduleAppointment()"
+        *ngIf="
+          listing &&
+          loginData?.memberMlsId != listing?.listAgentMlsid &&
+          listing?.propertyStatus != 'Pending' &&
+          (listing?.showingEnabled == listing?.homeappterMember)"
+      >{{listing?.homeappterMember ? 'Schedule Appointment' : 'Request Appointment'}}</button>
+      <button mat-raised-button (click)="onClose()" class="p-ml-3">Close</button>
+    </div>
+  </div>
+  <div class="listing-page-form p-p-0">
+    <app-listing-data-form [listing]="listing" [formGroupValue]="listingDataForm" [view]="formView" [loginData]="loginData"></app-listing-data-form>
+  </div>
+</p-sidebar>

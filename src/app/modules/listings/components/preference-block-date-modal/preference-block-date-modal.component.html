@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>{{title}}</h1>
+<div mat-dialog-content>
+  <app-preference-block-date-form [formGroupValue]="blockDateForm"></app-preference-block-date-form>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-raised-button color="primary" cdkFocusInitial [disabled]="blockDateForm?.invalid" (click)="onSave()">Save</button>
+  <button mat-raised-button (click)="onCancel()">Cancel</button>
+</div>

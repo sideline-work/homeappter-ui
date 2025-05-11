@@ -1,0 +1,39 @@
+<!-- <div class="p-col-12 p-md-12 p-p-0" *ngFor="let message of messages">
+  <app-message-preview [message]="message"></app-message-preview>
+</div> -->
+<!-- <p-dataView
+  [value]="messages" #dv
+  layout="list" styleClass="listing-data-view">
+  <ng-template let-message pTemplate="listItem">
+    <div class="p-col-12 p-md-12">
+      <app-message-preview [message]="message"></app-message-preview>
+    </div>
+  </ng-template>
+</p-dataView> -->
+<!-- <p>{{rooms | json}}</p> -->
+
+<!-- <p-orderList [value]="messages" filterBy="fullAddress" [dragdrop]="false" styleClass="message-list">
+  <ng-template let-message pTemplate="item">
+    <div class="p-col-12 p-md-12 p-p-0">
+      <app-message-preview [message]="message"></app-message-preview>
+    </div>
+  </ng-template>
+</p-orderList> -->
+<div class="p-pb-2">
+  <p-autoComplete
+    [(ngModel)]="selectedContact"
+    [suggestions]="contacts"
+    (onSelect)="onSelectUser($event)"
+    (completeMethod)="onContactSearch($event)"
+    styleClass="search-user-chat"
+    placeholder="Search User" field="fullname">
+  </p-autoComplete>
+</div>
+
+<p-orderList [value]="rooms" filterBy="fullAddress" [dragdrop]="false" styleClass="message-list" [(ngModel)]="selectedRoom">
+  <ng-template let-message pTemplate="item">
+    <div class="p-col-12 p-md-12 p-p-0">
+      <app-message-preview [message]="message"></app-message-preview>
+    </div>
+  </ng-template>
+</p-orderList>

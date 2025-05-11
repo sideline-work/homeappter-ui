@@ -1,0 +1,83 @@
+<div fxLayout="column" fxLayoutAlign="space-around start" fxLayoutGap="30px" class="p-mt-2">
+  <div fxLayout="row" fxFill fxLayoutAlign="start start">
+    <div fxFlex="40" fxLayout="column" fxLayoutAlign="start start">
+      <p class="mat-title">Approval Type</p>
+      <p>{{selectedApprovalType}}</p>
+    </div>
+    <div fxFlex="30" fxLayout="column" fxLayoutAlign="start start">
+      <p class="mat-title">Home Status</p>
+      <p>{{selectedHomeStatus}}</p>
+    </div>
+  </div>
+  <div fxLayout="row" fxFill fxLayoutAlign="start start">
+    <div fxFlex="40" fxLayout="column" fxLayoutAlign="start start">
+      <p class="mat-title">Minimum Hours Before Notice</p>
+      <p>{{selectedMinimumHours}}</p>
+    </div>
+    <div fxFlex="30" fxLayout="column" fxLayoutAlign="start start">
+      <p class="mat-title">Showing Duration</p>
+      <p>{{selectedShowingDuration}}</p>
+    </div>
+    <div fxFlex="30" fxLayout="column" fxLayoutAlign="start start">
+      <p class="mat-title">Showing Hours</p>
+      <p *ngIf="showingInstruction?.workTime || (startDateTime && endDateTime && isPrintView)">{{startDateTime | date : 'h:mm a'}} - {{endDateTime | date : 'h:mm a'}}</p>
+      <p *ngIf="!showingInstruction?.workTime"> </p>
+    </div>
+  </div>
+  <div fxLayout="row" fxFill fxLayoutGap="10px">
+    <div fxFlex="30">
+      <p-chip label="Accompanied Showing" [icon]="showingInstruction?.accompaniedShowing ? 'pi pi-check'  : 'pi pi-times'"
+      [ngClass]="
+      {
+        'showing-instruction-chip-checked': showingInstruction?.accompaniedShowing
+      }"
+      >
+      </p-chip>
+    </div>
+    <div fxFlex="30">
+      <p-chip label="Allowed Overlapping" [icon]="showingInstruction?.overlapping ? 'pi pi-check'  : 'pi pi-times'"
+        [ngClass]="
+        {
+          'showing-instruction-chip-checked': showingInstruction?.overlapping
+        }"
+      >
+      </p-chip>
+    </div>
+  </div>
+  <div fxLayout="column" fxLayoutGap="10px">
+    <p class="mat-title">Showing Instruction:</p>
+    <p>{{showingInstruction?.showingInstructions  ?  showingInstruction?.showingInstructions : 'None'}}</p>
+  </div>
+  <div fxLayout="column" fxLayoutGap="10px">
+    <p class="mat-title">Private Notes:</p>
+    <p>{{showingInstruction?.privateNotes ? showingInstruction?.privateNotes : 'None' }}</p>
+  </div>
+  <div fxLayout="column" fxLayoutGap="10px">
+    <p class="mat-title">Contact List</p>
+    <app-preference-contacts-table
+      *ngIf="showingInstruction?.contactList?.length > 0"
+      [preferenceContacts]="showingInstruction?.contactList"
+    ></app-preference-contacts-table>
+    <p class="mat-h3 p-col-12" *ngIf="!showingInstruction?.contactList || showingInstruction?.contactList?.length == 0" >No Contacts</p>
+  </div>
+  <div fxLayout="column" fxLayoutGap="10px">
+    <p class="mat-title">Block Time</p>
+    <app-preference-block-time-table
+      *ngIf="showingInstruction?.blockDateList?.length > 0"
+      [preferenceBlockDate]="showingInstruction?.blockDateList"
+      [isPrintView]="true"
+    ></app-preference-block-time-table>
+    <p class="mat-h3 p-col-12" *ngIf="!showingInstruction?.blockDateList || showingInstruction?.blockDateList ?.length == 0" >No Block Time</p>
+  </div>
+  <div fxLayout="column" fxLayoutGap="10px">
+    <p class="mat-title">Access List</p>
+    <app-preference-access-table
+      *ngIf="showingInstruction?.accessList?.length > 0"
+      [preferenceAccess]="showingInstruction?.accessList"
+      [isPrintView]="true"
+    ></app-preference-access-table>
+    <p class="mat-h3 p-col-12"
+      *ngIf="!showingInstruction?.accessList || showingInstruction?.accessList?.length == 0"
+    >No Access List</p>
+  </div>
+</div>

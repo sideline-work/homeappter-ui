@@ -1,0 +1,24 @@
+:host ::ng-deep {
+  .modal-sm {
+    width: 380px;
+  }
+
+  .modal-md {
+    width: 650px;
+    max-width: calc(100% - 120px);
+  }
+
+  .modal-lg {
+    width: 1040px;
+    max-width: calc(100% - 120px);
+  }
+
+  .modal-xlg {
+    width: 90vw;
+    height: 90vh;
+  }
+
+  .p-dialog .p-dialog-header {
+    padding: 1rem 1rem 1rem 1.25rem;
+  }
+}

@@ -1,0 +1,10 @@
+<app-modal [header]="'Add New Listing Form'" [styleClass]="'modal-lg'" [minWidth]="'50vw'">
+  <div fxLayout="column" fxLayoutAlign="space-around stretch" >
+    <app-add-new-listing-form [formGroupValue]="addNewListingForm"></app-add-new-listing-form>
+  </div>
+  <ng-template #modalFooter>
+    <button mat-raised-button color="primary" (click)="onAddNewListing()" [disabled]="addNewListingForm?.invalid">Add Listing</button>
+    <button mat-raised-button mat-dialog-close>Cancel</button>
+  </ng-template>
+</app-modal>
+<app-dialog></app-dialog>

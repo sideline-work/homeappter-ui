@@ -1,0 +1,51 @@
+<p-card styleClass="p-card-shadow p-py-0 p-b-0 preference-access-details">
+  <div fxLayout="row" fxLayoutAlign="space-between stretch">
+    <div fxLayout="column">
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <p class="mat-h4">Access Type: </p>
+        <p class="p-ml-3 p-mt-1">{{item?.accessType | tableCell: null : 'accessType'}}</p>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <p class="mat-h4">Access Code: </p>
+        <p class="p-ml-3 p-mt-1">{{item?.accessCode}}</p>
+      </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="end start">
+      <button mat-icon-button color="primary" (click)="onDelete()">
+        <mat-icon>delete</mat-icon>
+      </button>
+      <button mat-icon-button color="primary" (click)="onEdit()">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div fxLayout="column" fxLayoutAlign="space-between stretch" class="p-py-0 access-text-area" fxLayoutGap="-10px">
+    <div class="p-field p-mb-0">
+      <label class="mat-h4">Remarks:</label>
+      <div class="p-col-12 p-md-12 p-px-0">
+        <textarea
+          [rows]="6"
+          pInputTextarea
+          [autoResize]="true"
+          [readonly]="true"
+          [value]="item?.remarks"
+          class="form-control form-control-enabled">
+        </textarea>
+      </div>
+    </div>
+    <div class="p-field p-mb-0" *ngIf="item?.location">
+      <label class="mat-h4">Location</label>
+      <div class="p-col-12 p-md-12 p-px-0">
+        <textarea
+          [rows]="3"
+          pInputTextarea
+          [autoResize]="true"
+          [readonly]="true"
+          [value]="item?.location ? item?.location : ''"
+          class="form-control form-control-enabled">
+        </textarea>
+      </div>
+    </div>
+  </div>
+</p-card>
+

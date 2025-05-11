@@ -1,0 +1,171 @@
+<!-- <div class="card"> -->
+<div class="p-d-inline-flex">
+  <form [formGroup]="reportsPageForm">
+    <!-- <label class="p-text-bold">Date</label> -->
+    <p-calendar
+      [minDate]="today"
+      class="form-control"
+      styleClass="form-control"
+      formControlName="dateRange"
+      placeholder="Select a specific date or range"
+      selectionMode="range"
+      [showButtonBar]="true"
+      [readonlyInput]="true"
+      #reportDateRangecalendar
+      (onSelect)="onDateRangeSelect()"
+      [showIcon]="true"
+      inputId="range"
+      appendTo="body">
+      </p-calendar>
+  </form>
+</div>
+
+
+<div class="p-mb-4"></div>
+<div class="p-mb-4"></div>
+
+<div class="p-d-flex p-ai-center">
+   <div class="p-mr-2" style="height:100px">
+      <p-chart type="pie" [data]="data" [options]="basicOptions"  width="200" height="200"></p-chart>
+   </div>
+   <div class="p-d-flex p-flex-column">
+      <p-table #dt [columns]="cols" [value]="activeListings" [paginator]="true" [rows]="5">
+      <ng-template pTemplate="caption">
+         <h1 style="background-color: #6f7fd9;color:white;">Active Listings</h1>
+         <div class="p-d-flex">
+            <button type="button" pButton pRipple icon="pi pi-file-o" (click)="dt.exportCSV()" class="p-mr-2" pTooltip="CSV" tooltipPosition="bottom"></button>
+            <button type="button" pButton pRipple icon="pi pi-file-excel" (click)="exportExcel()" class="p-button-success p-mr-2"  pTooltip="XLS" tooltipPosition="bottom"></button>
+            <!-- <button type="button" pButton pRipple icon="pi pi-file-pdf" (click)="exportPdf()" class="p-button-warning p-mr-2" pTooltip="PDF" tooltipPosition="bottom"></button> -->
+            <!-- <button type="button" pButton pRipple icon="pi pi-filter" (click)="dt.exportCSV({selectionOnly:true})" class="p-button-info p-ml-auto" pTooltip="Selection Only" tooltipPosition="bottom"></button> -->
+         </div>
+      </ng-template>
+      <ng-template pTemplate="header" let-columns>
+         <tr>
+            <th *ngFor="let col of columns">
+               {{col.header}}
+            </th>
+         </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-rowData let-columns="columns">
+         <tr>
+            <td *ngFor="let col of columns">
+               {{rowData[col.field]}}
+            </td>
+         </tr>
+      </ng-template>
+      </p-table>
+
+      <p-table #dt [columns]="cols" [value]="pendingListings" [paginator]="true" [rows]="5">
+      <ng-template pTemplate="caption">
+         <h1 style="background-color: #6f7fd9;color:white;">Pending Listings</h1>
+         <div class="p-d-flex">
+            <button type="button" pButton pRipple icon="pi pi-file-o" (click)="dt.exportCSV()" class="p-mr-2" pTooltip="CSV" tooltipPosition="bottom"></button>
+            <button type="button" pButton pRipple icon="pi pi-file-excel" (click)="exportExcel()" class="p-button-success p-mr-2"  pTooltip="XLS" tooltipPosition="bottom"></button>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="header" let-columns>
+         <tr>
+            <th *ngFor="let col of columns">
+               {{col.header}}
+            </th>
+         </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-rowData let-columns="columns">
+         <tr>
+            <td *ngFor="let col of columns">
+               {{rowData[col.field]}}
+            </td>
+         </tr>
+      </ng-template>
+      </p-table>
+   </div>
+</div>
+
+<div class="p-mb-4"></div>
+<div class="p-mb-4"></div>
+
+<div class="p-d-flex p-ai-center">
+   <div class="p-mr-2" style="height:100px">
+      <p-chart type="pie" [data]="data1" [options]="basicOptions"  width="200" height="200"></p-chart>
+   </div>
+   <div class="p-d-flex p-flex-column">
+      <p-table #dt [columns]="cols" [value]="confirmShowing" [paginator]="true" [rows]="5">
+      <ng-template pTemplate="caption">
+         <h1 style="background-color: #6f7fd9;color:white;">Confirmed Showings</h1>
+         <div class="p-d-flex">
+            <button type="button" pButton pRipple icon="pi pi-file-o" (click)="dt.exportCSV()" class="p-mr-2" pTooltip="CSV" tooltipPosition="bottom"></button>
+            <button type="button" pButton pRipple icon="pi pi-file-excel" (click)="exportExcel()" class="p-button-success p-mr-2"  pTooltip="XLS" tooltipPosition="bottom"></button>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="header" let-columns>
+         <tr>
+            <th *ngFor="let col of columns">
+               {{col.header}}
+            </th>
+         </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-rowData let-columns="columns">
+         <tr>
+            <td *ngFor="let col of columns">
+               {{rowData[col.field]}}
+            </td>
+         </tr>
+      </ng-template>
+      </p-table>
+
+      <p-table #dt [columns]="cols" [value]="requestedShowing" [paginator]="true" [rows]="5">
+      <ng-template pTemplate="caption">
+         <h1 style="background-color: #6f7fd9;color:white;">Pending Showings</h1>
+         <div class="p-d-flex">
+            <button type="button" pButton pRipple icon="pi pi-file-o" (click)="dt.exportCSV()" class="p-mr-2" pTooltip="CSV" tooltipPosition="bottom"></button>
+            <button type="button" pButton pRipple icon="pi pi-file-excel" (click)="exportExcel()" class="p-button-success p-mr-2"  pTooltip="XLS" tooltipPosition="bottom"></button>
+         </div>
+      </ng-template>
+      <ng-template pTemplate="header" let-columns>
+         <tr>
+            <th *ngFor="let col of columns">
+               {{col.header}}
+            </th>
+         </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-rowData let-columns="columns">
+         <tr>
+            <td *ngFor="let col of columns">
+               {{rowData[col.field]}}
+            </td>
+         </tr>
+      </ng-template>
+      </p-table>
+
+      <p-table #dt [columns]="cols" [value]="cancelShowing" [paginator]="true" [rows]="5">
+      <ng-template pTemplate="caption">
+         <h1 style="background-color: #6f7fd9;color:white;">Cancelled Showings</h1>
+         <div class="p-d-flex">
+            <button type="button" pButton pRipple icon="pi pi-file-o" (click)="dt.exportCSV()" class="p-mr-2" pTooltip="CSV" tooltipPosition="bottom"></button>
+            <button type="button" pButton pRipple icon="pi pi-file-excel" (click)="exportExcel()" class="p-button-success p-mr-2"  pTooltip="XLS" tooltipPosition="bottom"></button>
+         </div>
+      </ng-template>
+      <ng-template pTemplate="header" let-columns>
+         <tr>
+            <th *ngFor="let col of columns">
+               {{col.header}}
+            </th>
+         </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-rowData let-columns="columns">
+         <tr>
+            <td *ngFor="let col of columns">
+               {{rowData[col.field]}}
+            </td>
+         </tr>
+      </ng-template>
+      </p-table>
+   </div>
+</div>
+
+<div class="p-mb-4"></div>
+<div class="p-mb-4"></div>
+
+<h1>Showings Market Analysis</h1>
+<p-chart type="horizontalBar" [data]="basicData" [options]="basicOptions" width="800" height="800"></p-chart>
+<!-- </div> -->

@@ -1,0 +1,4 @@
+<p-fullCalendar #fc [events]="events"  [options]="options"></p-fullCalendar>
+<div #tippyTemplate>
+ <app-appointment-preview [appointment]="selectedAppointmentToPreview"  *ngIf="showTippy"></app-appointment-preview>
+</div>

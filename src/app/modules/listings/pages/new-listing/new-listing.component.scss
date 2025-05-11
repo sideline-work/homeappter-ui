@@ -1,0 +1,30 @@
+.default-fab {
+  width: 27px;
+  height: 27px;
+  line-height: 22px;
+  font-size: 22px;
+
+  &::ng-deep .mat-button-wrapper{
+      line-height: 14px;
+      padding: 0;
+
+       .mat-icon {
+          font-size: 19px;
+          padding-right: 0px;
+          padding-top: 2px;
+       }
+
+ }
+}
+
+
+:host ::ng-deep {
+  .p-datatable .p-datatable-tbody > tr > td {
+    padding: 0.20rem 0.75rem;
+  }
+}
+
+
+.disable-listing-button {
+  margin-right: 8px;
+}

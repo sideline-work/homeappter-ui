@@ -1,0 +1,11 @@
+  <p-card styleClass="p-card-shadow" styleClass="form-card" [ngClass]="{'form-card-footer-border': withFooterUnderline}">
+    <ng-template pTemplate="header">
+      <h3 class="p-px-3 p-py-1">
+        <ng-container *ngTemplateOutlet="formCardHeaderTemplate"></ng-container>
+      </h3>
+    </ng-template>
+    <ng-container *ngTemplateOutlet="formCardBodyTemplate"></ng-container>
+    <ng-template pTemplate="footer">
+      <ng-container *ngTemplateOutlet="formCardFooterTemplate"></ng-container>
+    </ng-template>
+  </p-card>

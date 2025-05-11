@@ -1,0 +1,134 @@
+<form [formGroup]="formGroupValue" *ngIf="formGroupValue">
+  <div class="p-field">
+    <label class="p-text-bold">Name</label>
+    <input
+      type="text"
+      pInputText
+      class="form-control"
+      formControlName="name"
+      pTooltip="{{ f['name'].errors | formErrors: 'name'}}"
+      tooltipStyleClass="error-tooltip"
+      [tooltipDisabled]="!(f['name'].invalid && f['name'].touched)"
+      [class.has-error]="f['name'].invalid && f['name'].touched"
+    >
+  </div>
+  <div class="p-field">
+    <label  class="p-text-bold">Contact Type</label>
+    <p-dropdown [options]="contactTypes" placeholder="Select contact type" formControlName="contactType" appendTo="body" class="form-control"></p-dropdown>
+  </div>
+  <div class="p-fluid" fxFill fxLayout="row" fxLayoutGap="20px">
+    <div class="p-field" fxFlex="50">
+      <label class="p-text-bold">Phone</label>
+      <input
+        type="number"
+        pInputText
+        class="form-control"
+        formControlName="phone"
+        pTooltip="{{ f['phone'].errors | formErrors: 'phone'}}"
+        tooltipStyleClass="error-tooltip"
+        [tooltipDisabled]="!(f['phone'].invalid && f['phone'].touched)"
+        [class.has-error]="f['phone'].invalid && f['phone'].touched"
+      >
+    </div>
+    <div class="p-field" fxFlex="50">
+      <label class="p-text-bold">Email</label>
+      <input
+        type="text"
+        pInputText
+        class="form-control"
+        formControlName="email"
+        pTooltip="{{ f['email'].errors | formErrors: 'email'}}"
+        tooltipStyleClass="error-tooltip"
+        [tooltipDisabled]="!(f['email'].invalid && f['email'].touched)"
+        [class.has-error]="f['email'].invalid && f['email'].touched"
+      >
+    </div>
+  </div>
+  <mat-divider class="p-my-2"></mat-divider>
+  <p class="mat-h4 p-text-bold p-py-2 label-notification">
+    Method of Notification
+    <small
+      class="p-pl-3 has-error"
+      *ngIf="fgErrors && fgErrors?.atLeastOneMethodOfNotification
+      && (f['notifViaEmail'].touched ||
+          f['notifViaCall'].touched ||
+          f['notifViaSms'].touched)
+      "
+    >Select at least one notification method</small>
+  </p>
+  <div fxLayout="row" fxLayoutAlign="space-between stretch" class="p-px-3">
+    <div class="p-field-checkbox">
+      <p-checkbox name="notifViaEmail"
+        [binary]="true"
+        formControlName="notifViaEmail"
+        class="form-control"
+        inputId="notifViaEmail">
+      </p-checkbox>
+      <label for="notifViaEmail">Email</label>
+    </div>
+    <div class="p-field-checkbox">
+      <p-checkbox name="notifViaCall"
+        [binary]="true"
+        formControlName="notifViaCall"
+        inputId="notifViaCall">
+      </p-checkbox>
+      <label for="notifViaCall">Call</label>
+    </div>
+    <div class="p-field-checkbox">
+      <p-checkbox name="notifViaSms"
+        [binary]="true"
+        formControlName="notifViaSms"
+        inputId="notifViaSms">
+      </p-checkbox>
+      <label for="notifViaSms">SMS/TXT</label>
+    </div>
+  </div>
+  <mat-divider class="p-my-2 p-mb-4"></mat-divider>
+  <p class="mat-h4 p-text-bold p-py-2 label-notification">Notification Types
+    <small
+      class="p-pl-3 has-error"
+      *ngIf="fgErrors && fgErrors?.atLeastOneNotificationType
+      && (f['receivedNotifShowingApproval'].touched ||
+          f['receivedNotifAppointmentStatus'].touched ||
+          f['receivedNotifShowingFeedback'].touched)
+      "
+    >Select at least one notification type</small>
+  </p>
+  <div fxLayout="column" fxLayoutAlign="start start" class="p-px-3">
+    <div class="p-field-checkbox">
+      <p-checkbox name="receivedNotifShowingApproval"
+        [binary]="true"
+        formControlName="receivedNotifShowingApproval"
+        inputId="receivedNotifShowingApproval">
+      </p-checkbox>
+      <label for="receivedNotifShowingApproval">Receive Showing Approval Requests
+      </label>
+    </div>
+    <div class="p-field-checkbox">
+      <p-checkbox name="receivedNotifAppointmentStatus"
+        [binary]="true"
+        formControlName="receivedNotifAppointmentStatus"
+        inputId="receivedNotifAppointmentStatus">
+      </p-checkbox>
+      <label for="receivedNotifAppointmentStatus">Receive Appointment Status Notifications</label>
+    </div>
+    <div class="p-field-checkbox">
+      <p-checkbox name="receivedNotifShowingFeedback"
+        [binary]="true"
+        formControlName="receivedNotifShowingFeedback"
+        inputId="receivedNotifShowingFeedback">
+      </p-checkbox>
+      <label for="receivedNotifShowingFeedback">Receive Showing Feedback</label>
+    </div>
+  </div>
+  <mat-divider class="p-my-2 p-mb-4"></mat-divider>
+  <div class="p-field-checkbox mat-h4 p-mt-4 p-pl-3 p-jc-center">
+    <p-checkbox name="priority"
+      [binary]="true"
+      formControlName="priority"
+      inputId="priority">
+    </p-checkbox>
+    <label for="priority">Contact as priority?</label>
+  </div>
+
+</form>

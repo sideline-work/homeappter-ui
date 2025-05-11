@@ -1,0 +1,50 @@
+<p-card styleClass="p-card-shadow p-py-0">
+
+  <div fxLayout="row" fxLayoutAlign="space-between center" class="p-py-0 contact-details-group">
+    <p class="mat-title p-mb-0">{{item.name}}</p>
+    <div>
+      <button mat-icon-button color="primary" (click)="onDelete()">
+        <mat-icon>delete</mat-icon>
+      </button>
+      <button mat-icon-button color="primary" (click)="onEdit()">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="space-between center" class="p-py-0 contact-details-group">
+    <div class="p-p-0" fxLayout="column" class="p-pl-2">
+      <label class="p-col-fixed p-py-1">
+        <i class="pi pi-envelope p-mr-2" *ngIf="item.email"></i>{{item.email}}
+      </label>
+      <label class="p-col-fixed p-py-1">
+        <i class="pi pi-phone p-mr-2" *ngIf="item.phone"></i>{{item.phone}}
+      </label>
+    </div>
+  </div>
+  <mat-divider class="p-my-2"></mat-divider>
+  <p class="mat-h4">Method of Notification</p>
+  <div fxLayout="row" fxLayoutAlign="space-between center" class="p-pl-1 p-y-0 p-px-2">
+    <p *ngIf="item.notifViaEmail">
+      <i class="pi pi-check p-mr-2"></i>Email
+    </p>
+    <p *ngIf="item.notifViaSms">
+      <i class="pi pi-check p-mr-2"></i>SMS/TXT
+    </p>
+    <p *ngIf="item.notifViaCall">
+      <i class="pi pi-check p-mr-2"></i>Call
+    </p>
+  </div>
+  <mat-divider class="p-my-2"></mat-divider>
+  <p class="mat-h4">Notification Types</p>
+  <div fxLayout="column" fxLayoutAlign="start start" class="p-pl-1 p-y-0 notification-type-group p-px-2">
+    <p *ngIf="item.receivedNotifShowingApproval">
+      <i class="pi pi-check p-mr-2"></i>Receive Showing Approval Requests
+    </p>
+    <p *ngIf="item.receivedNotifAppointmentStatus">
+      <i class="pi pi-check p-mr-2"></i>Receive Appointment Status Notifications
+    </p>
+    <p *ngIf="item.receivedNotifShowingFeedback">
+      <i class="pi pi-check p-mr-2"></i>Receive Showing Feedback
+    </p>
+  </div>
+</p-card>

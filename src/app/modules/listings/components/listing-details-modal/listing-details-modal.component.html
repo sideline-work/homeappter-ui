@@ -1,0 +1,17 @@
+<!-- <app-modal [header]="'Listing'" [styleClass]="'modal-xlg'" [minHeight]="'70vh'" [minWidth]="'70vw'">
+  <div fxFlex fxFill fxLayout="row" fxLayoutAlign="space-around start">
+      <app-listing-data-form [listing]="listing" [formGroupValue]="listingDataForm" [view]="formView"></app-listing-data-form>
+  </div>
+  <ng-template #modalFooter>
+    <button mat-raised-button color="primary" (click)="scheduleAppointment()" *ngIf="listing && loginData?.memberMlsId != listing?.listAgentMlsid && listing?.propertyStatus != 'Pending' && listing?.showingStatus !=null">Schedule Appointment</button>
+    <button mat-raised-button mat-dialog-close>Close</button>
+  </ng-template>
+</app-modal> -->
+
+  <div fxFlex fxFill fxLayout="row" fxLayoutAlign="space-around start">
+      <app-listing-data-form [listing]="listing" [formGroupValue]="listingDataForm" [view]="formView"></app-listing-data-form>
+  </div>
+  <!-- <ng-template #modalFooter>
+    <button mat-raised-button color="primary" (click)="scheduleAppointment()" *ngIf="listing && loginData?.memberMlsId != listing?.listAgentMlsid && listing?.propertyStatus != 'Pending' && listing?.showingStatus !=null">Schedule Appointment</button>
+    <button mat-raised-button mat-dialog-close>Close</button>
+  </ng-template> -->

@@ -1,0 +1,46 @@
+:host ::ng-deep {
+  .listing-item-card {
+    width: auto;
+    // margin-bottom: 40px;
+    cursor: pointer;
+  }
+}
+
+.listing-price {
+  background-color: #919191;
+  color: white;
+  bottom: 95px;
+  position: absolute;
+  right: 7px;
+  z-index: 1;
+  padding: 6px;
+}
+
+
+.listing-image-card{
+  height: 200px;
+  object-fit: cover;
+}
+
+.address-title {
+  display: -webkit-box;
+  height: 70px;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
+
+}
+
+
+.page-is-mobile  {
+  :host ::ng-deep {
+    .listing-card-text {
+      font-size: 1.3rem;
+    }
+  }
+}
+
+
+
+

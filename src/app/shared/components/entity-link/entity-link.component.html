@@ -1,0 +1,42 @@
+<ng-container [ngSwitch]="entity">
+  <!-- Agent Entity Link) -->
+  <ng-container *ngSwitchCase="'agent'">
+    <div class="p-grid">
+      <div class="p-col-12 p-d-flex p-ai-center">
+        <img mat-card-avatar [src]="resultData?.photo" alt="Agent" *ngIf="resultData?.photo">
+        <p-avatar icon="pi pi-user" *ngIf="!resultData?.photo" size="large"
+          shape="circle">
+        </p-avatar>
+        <p class="p-pl-1 p-pt-3" *ngIf="showAgentName" [style.white-space]="'pre-wrap'">{{resultData?.fullname}}</p>
+      </div>
+      <div class="p-col-12" *ngIf="showContactDetails">
+        <p><label class="p-text-italic">Email :</label><label> {{resultData?.email}}</label></p>
+        <p><label class="p-text-italic">Phone Number:</label><label> {{resultData?.phoneNumber}}</label></p>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-container *ngSwitchCase="'agentOnCard'">
+    <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px" class="p-py-0">
+      <img mat-card-avatar [src]="resultData?.photo" alt="Agent" *ngIf="resultData?.photo">
+      <p-avatar icon="pi pi-user" *ngIf="!resultData?.photo" size="large"
+        shape="circle">
+      </p-avatar>
+      <p class="mat-title p-text-bold">{{resultData?.fullname}}</p>
+      <p><label> {{resultData?.email}}</label></p>
+      <p><label> {{resultData?.phoneNumber}}</label></p>
+    </div>
+  </ng-container>
+
+  <ng-container *ngSwitchCase="'adminuid'">
+    <div class="p-grid">
+      <div class="p-col-12 p-d-flex p-ai-center">
+        <img mat-card-avatar [src]="resultData?.photo" alt="Agent" *ngIf="resultData?.photo">
+        <p-avatar icon="pi pi-user" *ngIf="!resultData?.photo" size="large"
+          shape="circle">
+        </p-avatar>
+        <p class="p-pl-1 p-pt-3" *ngIf="showAgentName" [style.white-space]="'pre-wrap'">{{resultData?.fullname}}</p>
+      </div>
+    </div>
+  </ng-container>
+</ng-container>

@@ -1,0 +1,63 @@
+<div class="p-p-4 p-jc-center">
+  <form [formGroup]="formGroupValue">
+    <div class="p-fluid">
+      <div class="p-field">
+          <label for="mlsNumber">Agent Full Name</label>
+          <input id="mlsNumber" type="text" pInputText formControlName="listAgentFullname">
+      </div>
+      <div class="p-field">
+        <label for="mlsNumber">Agent Email</label>
+        <input id="mlsNumber" type="text" pInputText formControlName="listAgentEmail">
+      </div>
+      <div class="p-field">
+        <label for="mlsNumber">Agent Phone Number</label>
+        <input id="mlsNumber" type="text" pInputText formControlName="listAgentPhone">
+      </div>
+      <div class="p-field">
+        <label for="mlsNumber">MLS Number</label>
+        <input id="mlsNumber" type="text" pInputText formControlName="mlsNumber">
+      </div>
+      <div class="p-field">
+        <label for="mlsNumber">Property Type</label>
+        <p-dropdown [options]="propertyTypes" formControlName="propertyType" appendTo="body" class="form-control"></p-dropdown>
+      </div>
+      <div class="p-field">
+        <label for="mlsNumber">Property Status</label>
+        <p-dropdown [options]="propertyStatuses" formControlName="propertyStatus" appendTo="body" class="form-control"></p-dropdown>
+      </div>
+      <div class="p-field">
+        <label for="mlsNumber">Office Name</label>
+        <input id="mlsNumber" type="text" pInputText formControlName="listOfficeName">
+      </div>
+      <div class="p-field">
+        <label for="mlsNumber">MLS Number</label>
+        <input id="mlsNumber" type="text" pInputText formControlName="mlsNumber">
+      </div>
+      <div class="p-field">
+        <label for="mlsNumber">Full Address</label>
+        <input id="mlsNumber" type="text" pInputText formControlName="fullAddress">
+      </div>
+      <div class="p-field">
+        <label for="mlsNumber">Building Area (in square foot) </label>
+        <input id="mlsNumber" type="text" pInputText formControlName="buildingSqft">
+      </div>
+      <div class="p-field">
+        <label for="mlsNumber">Number of Bedrooms</label>
+        <input id="mlsNumber" type="number" pInputText formControlName="bedrooms">
+      </div>
+      <div class="p-field">
+        <label for="mlsNumber">Number of Bath</label>
+        <input id="mlsNumber" type="number" pInputText formControlName="bathTotal">
+      </div>
+      <div class="p-field">
+        <label for="mlsNumber">Public Remarks</label>
+        <textarea [rows]="7" [cols]="50" pInputTextarea [autoResize]="true" formControlName="publicRemarks" class="form-control"></textarea>
+      </div>
+      <div class="p-field">
+        <label for="mlsNumber">Directions</label>
+        <textarea [rows]="7" [cols]="50" pInputTextarea [autoResize]="true" formControlName="directions" class="form-control"></textarea>
+      </div>
+    </div>
+    <!-- <small>(*) Required fields</small> -->
+  </form>
+</div>

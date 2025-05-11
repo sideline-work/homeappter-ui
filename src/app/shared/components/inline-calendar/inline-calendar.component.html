@@ -1,0 +1,16 @@
+<mat-card class="inline-calendar-card">
+  <mat-calendar
+  [(selected)]="selectedDate"
+  [ngClass]="{
+    'month-view':  mode === CalendarMode.MONTH,
+    'week-view' :  mode === CalendarMode.WEEK,
+    'daily-view' :  mode === CalendarMode.DAY
+  }"
+  #matCal
+  [minDate]="minDate"
+  [maxDate]="maxDate"
+  [dateClass]="dateClass()"
+  #inlinecalendarTem
+  (selectedChange)="onSelect($event)">
+  </mat-calendar>
+</mat-card>

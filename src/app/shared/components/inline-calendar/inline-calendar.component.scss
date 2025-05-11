@@ -1,0 +1,29 @@
+@import 'partials/_variables';
+
+:host ::ng-deep {
+  .week-view .inline-calendar-style,
+  .month-view .inline-calendar-style {
+    background-color: $accentColorViolet2;
+  }
+  .inline-calendar-style .mat-calendar-body-cell-content{
+    color: white;
+  }
+  .week-view .mat-calendar-body-selected,
+  .month-view .mat-calendar-body-selected  {
+    border-radius: 0px;
+    background-color: $accentColorViolet2;
+  }
+  .week-view .mat-calendar-body-cell-content.mat-focus-indicator:hover,
+  .month-view .mat-calendar-body-cell-content.mat-focus-indicator:hover {
+    background-color: transparent !important;
+  }
+  .inline-calendar-card {
+    padding: 0px;
+  }
+  .event-calendar-style .mat-calendar-body-cell-content {
+    background-color: $accentColorViolet;
+    border-style: solid;
+    border-radius: 999px;
+    color: white;
+  }
+}

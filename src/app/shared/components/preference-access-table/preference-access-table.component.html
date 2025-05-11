@@ -1,0 +1,39 @@
+<app-table
+  [dense]="true"
+  [table]="table"
+  *ngIf="!isPrintView"
+>
+<ng-template #accessTypeTemplate let-row="row" let-col="col">
+  <td>
+    {{row?.accessType | tableCell: col: 'accessType'}}
+    <!-- {{row?.accessType}} -->
+  </td>
+</ng-template>
+</app-table>
+
+<p-table [value]="table?.rows" responsiveLayout="scroll"  *ngIf="isPrintView">
+  <ng-template pTemplate="header">
+      <tr>
+          <th>Access Type</th>
+          <th>Access Code</th>
+          <th>Remarks</th>
+          <th>Location</th>
+      </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-item let-col>
+      <tr>
+          <td>
+            {{item?.accessType | tableCell: col: 'accessType'}}
+          </td>
+          <td>
+            <span>{{item?.accessCode}}</span>
+          </td>
+          <td>
+            <span>{{item?.remarks}}</span>
+          </td>
+          <td>
+            <span>{{item?.location}}</span>
+          </td>
+      </tr>
+  </ng-template>
+</p-table>

@@ -1,0 +1,123 @@
+
+<div class="profile-details p-mx-5">
+  <app-form-card>
+    <ng-template #formCardHeader>
+      <p>Profile Information</p>
+    </ng-template>
+    <ng-template #formCardBody>
+      <form [style]="{'min-height':'50vh'}" [formGroup]="profileForm">
+        <div fxLayout="row" fxLayout.lt-sm="column">
+          <div fxFlex="45" fxLayout="column">
+            <div class="p-field p-grid">
+              <div class="p-field p-col">
+                <label class="p-col-fixed" style="width:500px">Name
+                  <i class="pi pi-user p-ml-2"></i>
+                </label>
+                <div class="p-col p-pt-3">
+                  <app-inplace-text-box
+                    [displayText]="member?.fullname"
+                    formControlNameValue="fullname"
+                    [editable]="false"
+                  >
+                  </app-inplace-text-box>
+                </div>
+              </div>
+            </div>
+            <div class="p-grid p-pt-4">
+              <div class="p-field p-col">
+                <label class="p-col-fixed" style="width:500px">Email
+                  <i class="pi pi-envelope p-ml-2"></i>
+                </label>
+                <div class="p-col">
+                  <app-inplace-text-box
+                    [displayText]="member?.email"
+                    formControlNameValue="email"
+                    [editable]="false"
+                  >
+                  </app-inplace-text-box>
+                </div>
+              </div>
+            </div>
+            <div class="p-grid p-pt-4">
+              <div class="p-field p-col">
+                <label class="p-col-fixed" style="width:500px">Phone Number
+                  <i class="pi pi-phone p-ml-2"></i>
+                </label>
+                <div class="p-col">
+                  <app-inplace-text-box
+                    [displayText]="member?.phoneNumber"
+                    [editable]="false"
+                    formControlNameValue="phoneNumber"
+                  >
+                  </app-inplace-text-box>
+                </div>
+              </div>
+            </div>
+            <div class="p-grid p-pt-4">
+              <div class="p-field p-col">
+                <label class="p-col-fixed" style="width:500px">Member Mls Id
+                  <i class="pi pi-credit-card p-ml-2"></i>
+                </label>
+                <div class="p-col">
+                  <app-inplace-text-box
+                    [displayText]="member?.memberMlsId?.toString()"
+                    formControlNameValue="memberMlsId"
+                    [editable]="false"
+                  >
+                  </app-inplace-text-box>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div fxFlex="55" fxLayout="column">
+            <div class="p-grid">
+              <div class="p-field p-col">
+                <label class="p-col-fixed" style="width:500px">Date Registered
+                  <i class="pi pi-calendar p-ml-2"></i>
+                </label>
+                <div class="p-col">
+                  <app-inplace-text-box
+                    [displayText]="member?.dateRegistered | date :  'MMMM d, y'"
+                    formControlNameValue="dateRegistered"
+                    [editable]="false"
+                  >
+                  </app-inplace-text-box>
+                </div>
+              </div>
+            </div>
+            <div class="p-grid p-pt-4">
+              <div class="p-field p-col">
+                <label class="p-col-fixed" style="width:500px">Status
+                  <i class="pi pi-user p-ml-2"></i>
+                </label>
+                <div class="p-col">
+                  <app-inplace-text-box
+                    [displayText]="member?.status"
+                    formControlNameValue="status"
+                    [editable]="false"
+                  >
+                  </app-inplace-text-box>
+                </div>
+              </div>
+            </div>
+            <div class="p-grid">
+              <div class="p-field p-col">
+                <div class="p-field-checkbox p-pl-2 p-pt-4">
+                  <p-checkbox
+                    formControlName="receivedNotif"
+                    [binary]="true"
+                    (onChange)="updateMemberProfile($event)"
+                    inputId="binary">
+                  </p-checkbox>
+                  <label for="binary">Do you want to receive notifications?
+                    <i class="pi pi-bell p-ml-2"></i>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </ng-template>
+  </app-form-card>
+</div>

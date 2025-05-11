@@ -1,0 +1,21 @@
+<p-card class="p-mt-0 listing-instruction-info">
+  <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="start start" class="p-px-5" fxLayoutGap="20px">
+    <img mat-card-image [src]="listing?.propertyMedia[0]" class="listing-image-instruction p-mt-1 p-mr-4" appImgFallback="assets/images/no-image.png">
+    <div fxLayout="column" fxFlex="35">
+      <p class="mat-h3 p-mt-1 p-text-bold">{{listing?.fullAddress}}</p>
+      <p class="mat-h4">MLS Number:  {{listing?.mlsNumber}}</p>
+      <p class="mat-h4">{{listing?.listOfficeName}}</p>
+    </div>
+    <div fxLayout="column" fxFlex="20">
+      <p class="mat-h3 p-mt-1 p-text-bold">{{listing?.listPrice | currency}}</p>
+      <p-chip
+        [ngClass]="
+          {
+            'active-background': listing?.propertyStatus == 'Active'
+          }"
+        [label]="listing?.propertyStatus"
+      ></p-chip>
+      <!-- <p class="mat-h3 p-pb-0">Type: {{listing?.propertyType}}</p> -->
+    </div>
+  </div>
+</p-card>

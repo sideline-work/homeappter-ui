@@ -1,0 +1,156 @@
+<app-dialog></app-dialog>
+<div class="register-wrapper">
+  <div fxFill fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="center center">
+    <p-card [style]="{width: '360px'}" styleClass="p-card-no-border register-card">
+      <ng-template pTemplate="header">
+        <div class="p-d-flex p-jc-center no-select-image-div">
+            <img src="assets/images/homeappter_logo.png" alt="ShowingTime Logo">
+        </div>
+        <h2 class="p-text-center">Create a New Profile</h2>
+      </ng-template>
+      <ng-container>
+      <div class="p-px-2">
+        <form [formGroup]="verifyForm" [hidden]="registrationStep != RegistrationStep.verify" >
+          <h3 class="p-text-center p-text-medium">Enter Member MLS ID</h3>
+          <div class="p-fluid">
+            <div class="p-field p-grid">
+              <div class="p-col-12">
+                <span class="p-float-label">
+                  <input id="float-input"
+                    type="text"
+                    pInputText
+                    name="memberMlsId"
+                    class="form-control"
+                    formControlName="memberMlsId"
+                    pTooltip="{{ fv['memberMlsId'].errors | formErrors: 'memberMlsId'}}"
+                    tooltipStyleClass="error-tooltip"
+                    [tooltipDisabled]="!(fv['memberMlsId'].invalid && fv['memberMlsId'].touched)"
+                    [class.has-error]="fv['memberMlsId'].invalid && fv['memberMlsId'].touched"
+                  >
+                  <label for="float-input">Member MLS ID:</label>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="p-grid p-text-medium p-text-center p-mb-2" >
+            <div class="p-col-12">
+              <div class="form-error form-error-alt form-error-message-fix-height p-pt-0" >
+                <span *ngIf="errorMessage">{{ errorMessage }}</span>
+                <span *ngIf="successMessage" class="p-text-accent-green"><i class="pi pi-check-circle p-mr-2"></i>{{ successMessage }}</span>
+              </div>
+            </div>
+          </div>
+          <div class="p-d-flex p-jc-center">
+            <button pButton type="button" label="Submit" [icon]="registrationProcessLoading ? 'pi pi-spin pi-spinner': 'pi pi-display-none'" (click)="onVerify()" class="p-mr-2" [disabled]="verifyForm.invalid || registrationProcessLoading"></button>
+            <button pButton type="button" label="Cancel" (click)="onCancel()"></button>
+          </div>
+        </form>
+
+        <form [formGroup]="otpForm" [hidden]="registrationStep != RegistrationStep.otp" >
+          <h3 class="p-text-center p-text-medium">Enter One Time Password</h3>
+          <div class="p-fluid">
+            <div class="p-field p-grid">
+              <div class="p-col-12">
+                <span class="p-float-label">
+                  <input id="float-input"
+                    type="text"
+                    pInputText
+                    name="otp"
+                    class="form-control"
+                    formControlName="otp"
+                    pTooltip="{{ fo['otp'].errors | formErrors: 'otp'}}"
+                    tooltipStyleClass="error-tooltip"
+                    [tooltipDisabled]="!(fo['otp'].invalid && fo['otp'].touched)"
+                    [class.has-error]="fo['otp'].invalid && fo['otp'].touched"
+                  >
+                  <label for="float-input">One Time Password:</label>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="p-grid p-text-medium p-text-center p-mb-2" >
+            <div class="p-col-12">
+              <div class="form-error form-error-alt form-error-message-fix-height p-pt-0 p-mb-3" >
+                <span *ngIf="errorMessage">{{ errorMessage }}</span>
+                <span *ngIf="successMessage" class="p-text-accent-green p-mb-2"><i class="pi pi-check-circle p-mr-2"></i>{{ successMessage }}</span>
+              </div>
+            </div>
+          </div>
+          <div class="p-d-flex p-jc-center">
+            <button pButton type="button" label="Submit" [icon]="registrationProcessLoading ? 'pi pi-spin pi-spinner': 'pi pi-display-none'" (click)="onOtp()" class="p-mr-2" [disabled]="otpForm.invalid || registrationProcessLoading"></button>
+            <button pButton type="button" label="Back" (click)="onBackToVerify()"></button>
+          </div>
+        </form>
+        <form [formGroup]="registerForm" [hidden]="registrationStep != RegistrationStep.register">
+          <h3 class="p-text-center p-text-medium">Complete your registration</h3>
+          <div class="p-fluid">
+            <div class="p-field p-grid">
+              <div class="p-col-12">
+                <span class="p-float-label">
+                  <input id="float-input"
+                    type="password"
+                    pInputText
+                    name="password"
+                    class="form-control"
+                    formControlName="password"
+                    pTooltip="{{ fr['password'].errors | formErrors: 'password'}}"
+                    tooltipStyleClass="error-tooltip"
+                    [tooltipDisabled]="!(fr['password'].invalid && fr['password'].touched)"
+                    [class.has-error]="fr['password'].invalid && fr['password'].touched"
+                  >
+                  <label for="float-input">Password:</label>
+                </span>
+              </div>
+            </div>
+            <!-- <div class="p-field p-grid">
+              <div class="p-col-12">
+                <span class="p-float-label">
+                  <input id="float-input"
+                    type="text"
+                    pInputText
+                    name="alternateEmail"
+                    class="form-control"
+                    formControlName="alternateEmail"
+                    pTooltip="{{ fr['alternateEmail'].errors | formErrors: 'alternateEmail'}}"
+                    tooltipStyleClass="error-tooltip"
+                    [tooltipDisabled]="!(fr['alternateEmail'].invalid && fr['alternateEmail'].touched)"
+                    [class.has-error]="fr['alternateEmail'].invalid && fr['alternateEmail'].touched"
+                  >
+                  <label for="float-input">Alternate Email:</label>
+                </span>
+              </div>
+            </div> -->
+            <div class="p-field p-grid">
+              <div class="p-col-12">
+                <div class="p-field-checkbox">
+                  <p-checkbox formControlName="receivedNotif" [binary]="true" inputId="receivedNotif"></p-checkbox>
+                  <label for="receivedNotif">Do you want to receive notification?</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="p-grid p-text-medium p-text-center p-mb-2" >
+            <div class="p-col-12">
+              <div class="form-error form-error-alt form-error-message-fix-height p-pt-0" >
+                <span *ngIf="errorMessage">{{ errorMessage }}</span>
+              </div>
+            </div>
+          </div>
+          <div class="p-d-flex p-jc-center">
+            <button pButton type="button" label="Register" [icon]="registrationProcessLoading ? 'pi pi-spin pi-spinner': 'pi pi-display-none'" (click)="onRegister()" class="p-mr-2" [disabled]="registerForm.invalid || registrationProcessLoading"></button>
+            <button pButton type="button" label="Cancel" (click)="onCancel()"></button>
+          </div>
+        </form>
+
+      </div>
+      </ng-container>
+      <ng-template pTemplate="footer">
+        <div class="p-d-flex p-jc-center p-mt-3">
+            <a class="p-text-medium anchor-no-underline p-text-accent-blue" routerLink="/forgot-password">Forgot password?</a>
+        </div>
+      </ng-template>
+    </p-card>
+  </div>
+</div>
+
+

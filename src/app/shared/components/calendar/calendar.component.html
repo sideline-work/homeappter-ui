@@ -1,0 +1,21 @@
+<p-calendar
+  [formControlName]="formControlNameValue"
+  [placeholder]="placeholder"
+  name="calendar"
+  [appendTo]="appendTo"
+  [disabled]="disabled"
+  [icon]="icon"
+  [hourFormat]="hourFormat"
+  [selectionMode]="selectionMode"
+  [showIcon]="true"
+  [minDate]="minDate"
+  [maxDate]="maxDate"
+  [timeOnly]="timeOnly"
+  [yearNavigator]="yearNavigator"
+  [showButtonBar]="showButtonBar"
+  [yearRange]="yearRange ? yearRange : derivedYearRange"
+  [readonlyInput]="readonlyInput"
+  [ngClass]="styleClass"
+  (onClose)="onCalendarClose($event)"
+>
+</p-calendar>

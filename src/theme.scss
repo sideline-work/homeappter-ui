@@ -1,0 +1,83 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$homeappter-primary: mat-palette($mat-indigo);
+$homeappter-accent: mat-palette($mat-pink, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$homeappter-warn: mat-palette($mat-red);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$homeappter-theme: mat-light-theme((
+  color: (
+    primary: $homeappter-primary,
+    accent: $homeappter-accent,
+    warn: $homeappter-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($homeappter-theme);
+
+@include mat-core();
+
+$my-blue: (
+  50: #624d82,
+  100: #1e004d,
+  200: #351a5f,
+  300: #1e004d,
+  400: #1e004d,
+  500: #1e004d,
+  600: #1e004d,
+  700: #1e004d,
+  800: #1e004d,
+  900: #1e004d,
+  A100: #1e004d,
+  A200: #1e004d,
+  A400: #1e004d,
+  A700: #1e004d,
+  contrast: (
+    50: white,
+    100: white,
+    200: white,
+    300: white,
+    400: white,
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+    A100: white,
+    A200: white,
+    A400: white,
+    A700: white,
+  )
+);
+
+$my-primary: mat-palette($my-blue, 100);
+$my-accent:  mat-palette($mat-pink, A200, A100, A400);
+$my-warn:  mat-palette($mat-red);
+
+$my-theme:   mat-light-theme((
+  color: (
+    primary: $my-primary,
+    accent: $my-accent,
+  )
+));
+
+
+@include angular-material-theme($my-theme);

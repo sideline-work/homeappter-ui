@@ -1,0 +1,25 @@
+<app-alert alertKey="globalAlerts"></app-alert>
+
+<div class="home-container" [class.page-is-mobile]="mobileQuery.matches">
+
+  <app-header class="home-header"><button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button></app-header>
+
+  <mat-sidenav-container class="home-sidenav-container">
+    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" class="home-sidenav"
+                 [fixedInViewport]="mobileQuery.matches" fixedTopGap="50" opened="true">
+      <app-side-bar></app-side-bar>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <div class="home-body">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+
+  </mat-sidenav-container>
+
+  <app-footer fxFlexOffset="auto" class="home-footer"></app-footer>
+
+</div>
+
+<ngx-spinner></ngx-spinner>

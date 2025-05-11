@@ -1,0 +1,47 @@
+
+<div fxFill class="listing-item-details-field p-pl-0 p-pt-1 p-pb-0">
+  <div class="p-grid p-mt-2">
+    <label for="firstname4" class="p-col-12 p-md-5 p-sm-6">Appointment Id</label>
+    <div class="p-col-12 p-md-7 p-sm-6">
+      <p>{{appointment?.appointmentId}}</p>
+    </div>
+  </div>
+  <div class="p-grid">
+    <label for="firstname4" class="p-col-12 p-md-5 p-sm-6">Appointment Date & Time</label>
+    <div class="p-col-12 p-md-7 p-sm-6">
+      <p>
+        {{appointment?.date| date}}
+        @
+        {{getDateFromTime(appointment?.startTime) | date: 'shortTime'}}
+        {{" - "}}
+        {{getDateFromTime(appointment?.endTime) | date: 'shortTime' }}
+      </p>
+    </div>
+  </div>
+  <div class="p-grid">
+    <label for="firstname4" class="p-col-12 p-md-5 p-sm-6">Address</label>
+    <div class="p-col-12 p-md-7 p-sm-6">
+      <p>{{appointment?.appointmentInfo?.fullAddress}}</p>
+    </div>
+  </div>
+  <form [formGroup]="formGroupValue">
+    <div class="p-grid form-group">
+      <label for="tickerStatus" class="p-col-12 p-md-5">Appointment Status</label>
+      <div class="p-col-12 p-md-7">
+        <p-dropdown [options]="appointmentStatuses" formControlName="appointmentStatus" appendTo="body" class="form-control"></p-dropdown>
+      </div>
+    </div>
+    <div class="p-grid form-group">
+      <label for="tickerStatus" class="p-col-12 p-md-5">Request Status</label>
+      <div class="p-col-12 p-md-7">
+        <p-dropdown [options]="requestStatuses" formControlName="requestStatus" appendTo="body" class="form-control"></p-dropdown>
+      </div>
+    </div>
+    <div class="p-grid p-mt-1 p-pb-0 p-mb-0">
+      <label for="tickerStatus" class="p-col-12 p-md-5">Remarks</label>
+      <div class="p-col-12 p-md-7">
+        <textarea [rows]="7" [cols]="50" pInputTextarea [autoResize]="true" formControlName="remarks" class="form-control"></textarea>
+      </div>
+    </div>
+  </form>
+</div>

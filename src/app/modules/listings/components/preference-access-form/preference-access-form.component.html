@@ -1,0 +1,63 @@
+<form [formGroup]="formGroupValue" *ngIf="formGroupValue">
+
+  <div class="p-field">
+    <label  class="p-text-bold">Access Type</label>
+    <p-dropdown
+      [options]="accessTypes"
+      placeholder="Select access type"
+      formControlName="accessType"
+      appendTo="body"
+      class="form-control"
+      pTooltip="{{ f['accessType'].errors | formErrors: 'accessType'}}"
+      tooltipStyleClass="error-tooltip"
+      [tooltipDisabled]="!(f['accessType'].invalid && f['accessType'].touched)"
+      [class.has-error]="f['accessType'].invalid && f['accessType'].touched"
+    ></p-dropdown>
+  </div>
+  <div class="p-field"
+    *ngIf="(formGroupValue.controls['accessType']?.value=='SUPRA_LOCKBOX' ||
+            formGroupValue.controls['accessType']?.value=='COMBO_LOCKBOX')">
+    <label class="p-text-bold">Location</label>
+    <input
+      id="location"
+      type="text"
+      pInputText
+      placeholder=""
+      class="form-control"
+      formControlName="location"
+      pTooltip="{{ f['location'].errors | formErrors: 'location'}}"
+      tooltipStyleClass="error-tooltip"
+      [tooltipDisabled]="!(f['location'].invalid && f['location'].touched)"
+      [class.has-error]="f['location'].invalid && f['location'].touched"
+    >
+  </div>
+  <div class="p-field">
+    <label class="p-text-bold">Access Code</label>
+    <input
+      type="number"
+      pInputText
+      class="form-control"
+      formControlName="accessCode"
+      pTooltip="{{ f['accessCode'].errors | formErrors: 'accessCode'}}"
+      tooltipStyleClass="error-tooltip"
+      [tooltipDisabled]="!(f['accessCode'].invalid && f['accessCode'].touched)"
+      [class.has-error]="f['accessCode'].invalid && f['accessCode'].touched"
+    >
+  </div>
+  <div class="p-field">
+    <label class="p-text-bold">Remarks</label>
+    <textarea
+      id="remarks"
+      type="text"
+      rows="6"
+      class="form-control"
+      [autoResize]="true"
+      formControlName="remarks"
+      pTooltip="{{ f['remarks'].errors | formErrors: 'remarks'}}"
+      tooltipStyleClass="error-tooltip"
+      [tooltipDisabled]="!(f['remarks'].invalid && f['remarks'].touched)"
+      [class.has-error]="f['remarks'].invalid && f['remarks'].touched"
+      pInputTextarea>
+    </textarea>
+  </div>
+</form>

@@ -1,0 +1,32 @@
+<div fxFill fxLayout="column" fxLayoutAlign="start start" >
+  <div  fxLayout="column" fxLayoutAlign="start center" class="p-px-3 p-py-2">
+    <app-table
+      [table]="enabledProperties"
+      caption="Enabled Listing"
+      [paginator]="true"
+      [rows]="7"
+    >
+    <ng-template #listingActionTemplate let-row="row" let-col="col">
+      <td fxLayout="row" fxLayoutAlign="center center">
+        <p-button pRipple type="button" label="Disable" styleClass="p-button-sm p-button-rounded p-button-secondary" class="p-mr-2 p-button-secondary" (onClick)="onChangeStatusToDisable(row)"></p-button>
+        <p-button pRipple type="button" label="Edit" styleClass="p-button-sm p-button-rounded p-button-primary" class="p-button-primary" (onClick)="onShowListingInstruction(row)"></p-button>
+      </td>
+    </ng-template>
+    </app-table>
+  </div>
+  <div fxLayout="column" fxLayoutAlign="start center" class="p-px-3 p-py-2">
+    <app-table
+      caption="Disabled Listing"
+      [table]="disabledProperties"
+      [paginator]="true"
+      [rows]="7"
+    >
+    <ng-template #listingActionTemplate let-row="row" let-col="col">
+      <td fxLayout="column" fxLayoutAlign="center center">
+        <p-button pRipple type="button" label="Enable" styleClass="p-button-sm p-button-rounded" class="p-button-success" (onClick)="onShowListingInstruction(row)"></p-button>
+      </td>
+    </ng-template>
+    </app-table>
+  </div>
+</div>
+<app-alert [alertKey]="alertKey"></app-alert>

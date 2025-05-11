@@ -1,0 +1,70 @@
+@import 'partials/_variables';
+
+:host ::ng-deep {
+  .ui-dialog-mask {
+    top: $homeHeaderHeight;
+    height: $homeBodyHeight;
+  }
+
+  .tba-confirm-dialog {
+    h1 {
+      text-align: center;
+    }
+    .ui-dialog-footer {
+      display: none;
+    }
+  }
+
+  .info-dialog {
+    .p-confirm-dialog-message  {
+      display: inline-flex;
+      align-items: center;
+      .pi-info-circle {
+        font-size: 2rem;
+        vertical-align: middle;
+        margin-right: 1rem;
+        flex: 1;
+      }
+    }
+  }
+
+  .question-dialog {
+    .p-confirm-dialog-message  {
+      display: inline-flex;
+      align-items: center;
+      .pi-question-circle {
+        font-size: 2rem;
+        vertical-align: middle;
+        margin-right: 1rem;
+        flex: 1;
+      }
+    }
+  }
+
+  .error-dialog {
+    .p-confirm-dialog-message  {
+      display: inline-flex;
+      align-items: center;
+      .pi-times-circle {
+        font-size: 2rem;
+        vertical-align: middle;
+        margin-right: 1rem;
+        flex: 1;
+      }
+    }
+  }
+}
+
+:host ::ng-deep {
+  .ui-widget-overlay,
+  .ui-dialog-mask {
+    top: $homeHeaderHeight;
+    height: $homeBodyHeight;
+  }
+}
+
+:host ::ng-deep {
+  .page-is-mobile .info-dialog {
+    width: 80vw;
+  }
+}

@@ -1,0 +1,41 @@
+
+<mat-card class="listing-item-card p-pt-0" matRipple (click)="onClickView(listing.listingId)">
+  <div class="listing-price">
+    <p class="listing-card-text p-pb-0 p-mb-0">{{listing.listPrice| currency}}</p>
+  </div>
+  <img mat-card-image [src]="listing?.photoUrl" class="listing-image-card" appImgFallback="assets/images/no-image.png">
+  <mat-card-content>
+    <div class="address-title p-pt-3">
+      <p class="listing-card-text">{{listing.fullAddress}}</p>
+    </div>
+  </mat-card-content>
+  <!-- <mat-card-actions fxLayout="column" fxLayoutAlign="end end">
+    <button pButton	class="p-button-warning p-mt-0 p-px-3" label="View" (click)="onClickView(listing.listingId)"></button>
+  </mat-card-actions> -->
+</mat-card>
+
+<!--
+<div class="inner">
+  <div class="image">
+      <div class="price average-color" style="background-color: rgb(140, 148, 148);"><span>$25.000</span></div>
+      <img src="assets/img/items/1.jpg" alt="">
+  </div>
+  <div class="item-content">
+      <header class="average-color" style="background-color: rgb(140, 148, 148);">
+          <h2>2151 Mulberry Avenue</h2>
+          <h3>63 Birch Street</h3>
+      </header>
+      <footer>
+          <dl>
+              <dt>Bathrooms</dt>
+              <dd>1</dd>
+              <dt>Bedrooms</dt>
+              <dd>2</dd>
+              <dt>Area</dt>
+              <dd>165m<sup>2</sup></dd>
+              <dt>Garages</dt>
+              <dd>1</dd>
+          </dl>
+      </footer>
+  </div>
+</div> -->

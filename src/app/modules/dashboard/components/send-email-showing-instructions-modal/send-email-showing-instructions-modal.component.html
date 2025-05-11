@@ -1,0 +1,11 @@
+<app-modal [header]="'Send Showing Instructions'" [styleClass]="'modal-md'">
+  <div fxFlex fxLayout="row" fxLayoutAlign="center center">
+    <app-send-email-showing-instructions-form [formGroupValue]="showingIntructionsForm"></app-send-email-showing-instructions-form>
+  </div>
+  <ng-template #modalFooter>
+    <button mat-raised-button color="primary" [disabled]="showingIntructionsForm.invalid" (click)="onSendEmailShowingInstructions()">Send Instructions</button>
+    <button mat-raised-button mat-dialog-close>Close</button>
+    <!-- <p>{{showingIntructionsForm.invalid}}</p> -->
+  </ng-template>
+</app-modal>
+<app-dialog></app-dialog>

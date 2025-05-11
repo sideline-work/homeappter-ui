@@ -1,0 +1,172 @@
+<div
+  fxFill
+  fxLayout="column"
+  fxLayoutAlign="center center"
+  class="login-wrapper"
+>
+  <mat-card class="p-p-0 mat-elevation-z20">
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+      <div *ngIf="!mobileQuery.matches">
+        <div fxFill fxLayout="column" fxLayoutAlign="center center">
+          <mat-card
+            class="login-background-image"
+            fxLayout="column"
+            fxLayoutAlign="center center"
+          >
+            <img
+              [style]="{ width: '200px', height: '200px' }"
+              src="assets/images/homeappter_logo.png"
+              alt="ShowingTime Logo"
+            />
+          </mat-card>
+        </div>
+      </div>
+      <div
+        fxFill
+        fxFlex="nogrow"
+        fxLayout="column"
+        fxLayoutAlign="center center"
+      >
+        <div fxLayout="column" fxLayoutAlign="center center">
+          <div
+            class="p-d-flex p-dj-center"
+            [ngClass]="{
+              'p-p-0': mobileQuery.matches,
+              'p-p-3': !mobileQuery.matches
+            }"
+          >
+            <p-card
+              styleClass="p-card-no-border"
+              [style]="{ width: '320px' }"
+              [styleClass]="
+                mobileQuery.matches ? 'login-card' : 'login-card-web'
+              "
+            >
+              <ng-template pTemplate="header">
+                <div *ngIf="mobileQuery.matches">
+                  <div class="p-d-flex p-jc-center p-pb-0 no-select-image-div">
+                    <img
+                      src="assets/images/homeappter_logo.png"
+                      alt="ShowingTime Logo"
+                    />
+                  </div>
+                  <p class="p-text-left p-pl-3 p-mb-0 mat-headline">
+                    Welcome Backa!
+                  </p>
+                </div>
+                <div *ngIf="!mobileQuery.matches">
+                  <div class="p-pt-4 p-pb-2 p-pl-3">
+                    <p
+                      class="p-text-left p-text-bold mat-headline p-text-primary"
+                    >
+                      Welcome Backu!
+                    </p>
+                  </div>
+                </div>
+              </ng-template>
+              <ng-template pTemplate="content">
+                <form [formGroup]="loginForm">
+                  <div class="p-fluid">
+                    <div class="p-field">
+                      <label for="float-input-memberMlsId" class="mat-h3"
+                        >Member MLS Id</label
+                      >
+                      <input
+                        id="float-input-memberMlsId"
+                        #inputEmail
+                        type="text"
+                        pInputText
+                        class="form-control"
+                        name="memberMlsId"
+                        formControlName="memberMlsId"
+                        pTooltip="{{
+                          f['memberMlsId'].errors | formErrors : 'memberMlsId'
+                        }}"
+                        tooltipStyleClass="error-tooltip"
+                        [tooltipDisabled]="
+                          !(
+                            f['memberMlsId'].invalid && f['memberMlsId'].touched
+                          )
+                        "
+                        [class.has-error]="
+                          f['memberMlsId'].invalid && f['memberMlsId'].touched
+                        "
+                      />
+                    </div>
+                    <div class="p-field p-pt-2">
+                      <label for="float-input-password" class="mat-h3"
+                        >Password</label
+                      >
+                      <input
+                        type="password"
+                        pInputText
+                        id="float-input-password"
+                        class="form-control"
+                        name="password"
+                        formControlName="password"
+                        pTooltip="{{
+                          f['password'].errors | formErrors : 'password'
+                        }}"
+                        tooltipStyleClass="error-tooltip"
+                        [tooltipDisabled]="
+                          !(f['password'].invalid && f['password'].touched)
+                        "
+                        [class.has-error]="
+                          f['password'].invalid && f['password'].touched
+                        "
+                      />
+                    </div>
+                    <!-- login error message -->
+                    <div class="p-grid p-pt-2" *ngIf="loginErrorMessage">
+                      <div class="p-col-12">
+                        <div class="form-error form-error-alt">
+                          {{ loginErrorMessage }}
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="p-fluid"
+                      [ngClass]="{
+                        'p-pt-4': !mobileQuery.matches,
+                        'p-pt-0': mobileQuery.matches
+                      }"
+                    >
+                      <div class="p-field p-grid">
+                        <div class="p-col-12">
+                          <button
+                            pButton
+                            type="button"
+                            label="LOGIN"
+                            (click)="login()"
+                            [disabled]="loginForm.invalid"
+                          ></button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </ng-template>
+              <ng-template pTemplate="footer">
+                <div class="p-d-flex p-flex-column p-text-center">
+                  <a
+                    class="p-text-medium anchor-no-underline p-text-accent-blue"
+                    routerLink="/forgot-password"
+                    >Forgot password?</a
+                  >
+                  <span class="p-text-small p-mt-4"
+                    >Not a HomeAppter customer?</span
+                  >
+                  <a
+                    class="p-text-medium anchor-no-underline p-text-accent-blue"
+                    routerLink="/register"
+                    >Create a profile now!</a
+                  >
+                </div>
+              </ng-template>
+            </p-card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+</div>

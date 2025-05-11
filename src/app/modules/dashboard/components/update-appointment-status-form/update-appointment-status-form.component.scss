@@ -1,0 +1,17 @@
+.listing-item-details-field .p-grid > [class*=p-col] {
+  // padding-bottom: 0px;
+  // padding-top: 5px;
+}
+
+.listing-item-details-field .p-grid > label {
+  font-weight: bold;
+}
+
+.listing-item-details-field {
+  padding-left: 1.5rem;
+}
+
+.listing-image-modal{
+  height: 200px;
+  object-fit: fill;
+}

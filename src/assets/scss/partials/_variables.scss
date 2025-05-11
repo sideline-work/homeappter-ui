@@ -1,0 +1,32 @@
+$homeHeaderHeight: 50px;
+$homeFooterHeight: 20px;
+$homeBodyHeight: calc(100vh - #{$homeHeaderHeight} - #{$homeFooterHeight});
+
+$homeSideNavWidth: 200px;
+$primaryColor: #1e004d;
+$accentColorBlue: #00abef;
+$accentColorViolet: #8c52ff;
+$accentColorViolet2: #c1a5fa;
+$accentColorPink: #ff4081;
+$accentColorGreen: #2fb4ad;
+
+$errorColor: #cc0000;
+$errorColor2: deeppink;
+$blueColor: #007ad9;
+$greyColor: #404040;
+$lightGreyColor: #f8f9fa;
+$lightGreyColor2:#aeb1b5;
+
+$primaryShadeColor1: #3d009b;
+$primaryShadeColor2: #5300d6;
+$primaryShadeColor3:#6300fe;
+
+$requestedAppointmentStatusBgColor: #3f2ca8;
+$confirmedAppointmentStatusBgColor: #0d4b12;
+$cancelledAppointmentStatusBgColor: #c52d2d;
+
+
+$sideNavColor: #ebeff2;
+$sideNavSelectedColor: #3f51b5;
+$sideNavTextColor: black;
+$sideNavTextSelectedColor: white;

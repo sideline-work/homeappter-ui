@@ -1,0 +1,17 @@
+<div fxLayout="column" class="p-p-3" fxLayoutAlign="space-evenly center" [style]="{'min-width': '180px'}" (click)="$event.stopPropagation();">
+  <p class="p-text-primary p-text-bold mat-h3">
+    {{memberDetails?.memberName}}
+  </p>
+  <span>{{memberDetails?.phoneNumber}}</span>
+  <span>{{memberDetails?.email}}</span>
+</div>
+<mat-divider></mat-divider>
+<button mat-menu-item (click)="onViewProfile()">
+  <mat-icon>account_circle</mat-icon>
+  <span>View Profile</span>
+</button>
+<mat-divider></mat-divider>
+<button mat-menu-item (click)="onLogout()">
+  <mat-icon>power_settings_new</mat-icon>
+  <span>Log off</span>
+</button>

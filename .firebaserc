@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "beta": "homeappter"
+  },
+  "targets": {
+    "homeappter": {
+      "hosting": {
+        "dev": [
+          "dev-homeappter"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,48 @@
+@import 'partials/_variables';
+@import 'partials/_primeng';
+@import 'partials/_forms';
+
+.login-wrapper {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  // background-image: url("/assets/images/background_login.jpeg");
+  // background-repeat:  no-repeat;
+  // background-size: cover;
+  //background-color: #dcdfff;
+  background: hsla(263, 42%, 65%, 1);
+  background: linear-gradient(90deg, hsla(263, 42%, 65%, 1) 0%, hsla(319, 77%, 86%, 1) 100%);
+  background: -moz-linear-gradient(90deg, hsla(263, 42%, 65%, 1) 0%, hsla(319, 77%, 86%, 1) 100%);
+  background: -webkit-linear-gradient(90deg, hsla(263, 42%, 65%, 1) 0%, hsla(319, 77%, 86%, 1) 100%);
+}
+
+.login-background-image {
+  height: 525px;
+  width: 525px;
+  background-image: url("/assets/images/background_login1-2.jpeg");
+  background-repeat:  no-repeat;
+  background-size: cover;
+  border-radius: 0px;
+}
+
+:host ::ng-deep {
+  .login-card {
+    background-color: $primaryColor;
+    color:white;
+  }
+  .login-card-web {
+    box-shadow: none;
+  }
+  .p-card-header img {
+    width: 70%;
+    height: 70%;
+  }
+}
+
+:host ::ng-deep {
+  .login-mobile-view{
+    .p-card-content {
+      padding: 0;
+    }
+  }
+}

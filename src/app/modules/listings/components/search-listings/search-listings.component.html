@@ -1,0 +1,6 @@
+<app-search-listings-filter (search)="onSearch($event)"></app-search-listings-filter>
+<div class="p-grid">
+  <div class="p-col-12" *ngIf="rows != null && rows.length != 0">
+    <app-listing-list [rows]="rows" (onListingView)="onClickView($event)"></app-listing-list>
+  </div>
+</div>

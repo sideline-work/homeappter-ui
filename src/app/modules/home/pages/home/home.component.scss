@@ -1,0 +1,57 @@
+@import 'partials/_variables';
+
+.home-header {
+  height:$homeHeaderHeight;
+}
+
+.home-body {
+  padding: 0.5rem;
+  // overflow-y: auto;
+  // height: $homeBodyHeight;
+}
+
+.home-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: $primaryColor;
+  color: white;
+  height: $homeFooterHeight;
+}
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: $homeFooterHeight;
+  left: 0;
+  right: 0;
+}
+
+.home-sidenav-container {
+  flex: 1;
+
+}
+
+.page-is-mobile .header-container {
+  position: fixed;
+  z-index: 2;
+}
+
+.page-is-mobile .home-sidenav-container {
+  flex: 1 0 auto;
+}
+
+
+.home-sidenav-container {
+  .mat-drawer.mat-drawer-side {
+    z-index: 1;
+  }
+}
+
+.home-sidenav {
+  background-color: $sideNavColor;
+  color: white;
+}

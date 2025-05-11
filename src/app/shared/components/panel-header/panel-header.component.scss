@@ -1,0 +1,16 @@
+@import 'partials/_variables';
+
+.panel-header {
+  padding: 20px 10px 5px 10px;
+  height: 38px;
+}
+
+.panel-sub-header{
+  background-color: $primaryShadeColor3;
+  height: 35px;
+  color: white;
+}
+
+.panel-header-spacer {
+  flex: 1 1 auto;
+}

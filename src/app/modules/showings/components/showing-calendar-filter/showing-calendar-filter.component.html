@@ -1,0 +1,36 @@
+<form [formGroup]="showingsCalendarFilterForm">
+  <div class="p-pr-3 p-pl-2 showings-filters" fxLayout="column" fxLayoutAlign="space-between center" fxLayoutGap="13px">
+      <!-- <div>
+        <app-panel-header title="Traditional"></app-panel-header>
+        <mat-card class="p-p-2">
+          <p-selectButton [options]="calendarModes" formControlName="calendarMode" optionLabel="name" optionValue="value"></p-selectButton>
+        </mat-card>
+      </div> -->
+      <div>
+        <app-inline-calendar
+          [mapDates]="mapDates"
+          [selectedDate]="selectedDate"
+          [mode]="selectedCalendarMode"
+          formControlName="selectedDateRange"
+          (viewChanged)="onViewChange($event)"></app-inline-calendar>
+      </div>
+      <div>
+        <app-panel-header title="Filtering Options"></app-panel-header>
+        <mat-card class="p-p-0" #onmylistings>
+          <app-panel-header title="Event Type" headerType="subheader">
+            <span matRipple class="mat-h4 p-text-button p-button-accent-pink" (click)="onSelectAllEventTypes()">All</span>
+          </app-panel-header>
+          <div class="p-fluid p-pt-2 p-pl-3 p-pr-2">
+            <p class="p-text-italic p-mb-1">Requested to me</p>
+            <app-checkbox-dropdown [filter]="true" formControlName="onMyListings" placeholder="On My Listings" [options]="onMyListingsList"></app-checkbox-dropdown>
+            <p class="p-text-italic p-mb-1 p-mt-2">I Have Requested</p>
+            <app-checkbox-dropdown [filter]="true" formControlName="iHaveRequested" placeholder="I have requested" [options]="iHaveRequestedList"></app-checkbox-dropdown>
+          </div>
+          <app-panel-header title="Appointment Status" class="p-mt-2" headerType="subheader" >
+            <span matRipple class="mat-h4 p-text-button p-button-accent-pink" (click)="onSelectAllStatus()">All</span>
+          </app-panel-header>
+          <app-checkbox-list [options]="appointmentStatuses" formControlNameValue="statuses"></app-checkbox-list>
+        </mat-card>
+      </div>
+  </div>
+</form>

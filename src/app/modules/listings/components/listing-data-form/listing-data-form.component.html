@@ -1,0 +1,99 @@
+<div fxLayout="column" class="p-px-3" fxLayoutGap="20px">
+  <div fxFlex fxFill fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="space-around start" fxLayoutGap="20px" *ngIf="listing">
+    <div fxFill fxFlex="60" fxLayout="column" fxLayoutAlign="center stretch">
+      <p-galleria [value]="medias" [containerStyle]="{'width': '100%'}" [responsiveOptions]="responsiveOptions" *ngIf="medias?.length != 0">
+        <ng-template pTemplate="item" let-media>
+          <img [src]="media.photoUrl" class="listing-image-modal" appImgFallback="assets/images/no-image.png">
+        </ng-template>
+        <ng-template pTemplate="thumbnail" let-item>
+          <div class="p-grid p-nogutter p-justify-center">
+            <img  [src]="item.photoUrl" class="listing-image-thumbnail" appImgFallback="assets/images/no-image.png">
+          </div>
+        </ng-template>
+      </p-galleria>
+      <img  src="assets/images/no-image.png" class="listing-image-modal" *ngIf="medias?.length == 0">
+    </div>
+    <div fxFill fxFlex="40" fxLayout="column" fxLayoutAlign="center stretch" fxLayoutGap="20px">
+      <p-card styleClass="listing-agent">
+        <div fxFill fxLayout="row" fxLayoutAlign="center center">
+          <div fxFlex="40" fxLayout="column" fxLayoutAlign="center center">
+            <img mat-card-avatar [src]="listing?.listAgentPhotoUrl" alt="Agent" *ngIf="listing?.listAgentPhotoUrl">
+            <p-avatar icon="pi pi-user" *ngIf="!listing?.listAgentPhotoUrl" size="large"
+              shape="circle">
+            </p-avatar>
+          </div>
+          <div fxFlex="60" fxLayout="column" fxLayoutAlign="center center">
+            <p class="mat-title p-text-bold">{{listing?.listAgentFullname}}</p>
+            <p><label> {{listing?.listAgentEmail}}</label></p>
+            <p><label> {{listing?.listAgentPhone}}</label></p>
+          </div>
+        </div>
+      </p-card>
+      <p-card styleClass="listing-info">
+        <div class="p-px-3">
+          <div class="p-grid p-ai-center">
+            <label class="p-col-6 p-md-6 mat-h3 p-text-bold">MLS Number:</label>
+            <label class="p-col-6 p-md-6">{{listing?.mlsNumber}}</label>
+          </div>
+          <div class="p-grid p-ai-center p-py-0">
+            <label class="p-col-6 p-md-6 mat-h3 p-text-bold">Type:</label>
+            <label class="p-col-6 p-md-6">{{listing?.propertyType}}</label>
+          </div>
+          <div class="p-grid p-ai-center">
+            <label class="p-col-6 p-md-6 mat-h3 p-text-bold">Status:</label>
+            <label class="p-col-6 p-md-6">{{listing?.propertyStatus}}</label>
+          </div>
+          <div class="p-grid p-ai-center">
+            <label class="p-col-6 p-md-6 mat-h3 p-text-bold">Office:</label>
+            <label class="p-col-6 p-md-6">{{listing?.listOfficeName}}</label>
+          </div>
+        </div>
+      </p-card>
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+  <div fxLayout="column" fxLayoutAlign="space-around start" fxLayoutGap="10px">
+    <div fxLayout="row" fxLayout.lt-sm="column" >
+      <p class="mat-title p-mr-4">{{listing?.fullAddress}}</p>
+      <p-chip label="Showing is not available for this property"
+        *ngIf="
+          (listing?.showingEnabled != listing?.homeappterMember) &&
+          loginData?.memberMlsId != listing?.listAgentMlsid">
+      </p-chip>
+    </div>
+    <div class="listing-price">
+      <h4 class="listing-card-text p-pb-0 p-mb-0">{{listing?.listPrice| currency}}</h4>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
+      <div class="with-icon">
+        <!-- <span class="fa fa-weight p-mr-3"></span> -->
+        <mat-icon class="p-mr-3">home</mat-icon>
+        {{listing?.buildingSqft ? listing?.buildingSqft  : 0 }} sq ft
+      </div>
+      <div class="with-icon">
+        <!-- <mat-icon class="p-mr-3">accessibility</mat-icon> -->
+        <span class="fa fa-bed p-mr-3"></span>{{listing?.bedrooms}}
+      </div>
+      <div class="with-icon">
+        <!-- <mat-icon class="p-mr-3" >room</mat-icon>{{listing?.bathTotal}} -->
+        <span class="fa fa-bath p-mr-3"></span>{{listing?.bathTotal}}
+      </div>
+    </div>
+  </div>
+  <!-- <mat-divider></mat-divider> -->
+  <div fxLayout="column" fxLayoutAlign="space-around start" fxLayoutGap="30px" class="p-mt-4">
+    <div fxLayout="column" fxLayoutGap="10px">
+      <label class="mat-title p-mb-4">Public Remarks</label>
+      <p>
+        {{listing?.publicRemarks ? listing?.publicRemarks : 'No Public Remarks'}}
+      </p>
+    </div>
+    <div fxLayout="column" fxLayoutGap="10px">
+      <label class="mat-title p-mb-4">Directions</label>
+      <p>
+        {{listing?.directions ? listing?.directions : 'No Directions'}}
+      </p>
+    </div>
+  </div>
+</div>
+

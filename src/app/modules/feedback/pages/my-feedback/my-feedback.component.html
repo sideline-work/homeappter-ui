@@ -1,0 +1,15 @@
+<p-tabView [(activeIndex)]="tab">
+  <!-- Feedback My Listings Tab -->
+  <p-tabPanel header="On My Listings">
+    <app-feedback-on-my-listing></app-feedback-on-my-listing>
+  </p-tabPanel>
+
+  <!-- Listings I Have Shown Tab -->
+
+  <p-tabPanel header="Listings I Have Shown">
+    <app-feedback-listings-ihave-shown></app-feedback-listings-ihave-shown>
+  </p-tabPanel>
+
+</p-tabView>
+<app-alert [alertKey]="alertKey"></app-alert>
+<router-outlet></router-outlet>

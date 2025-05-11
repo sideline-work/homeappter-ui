@@ -1,0 +1,59 @@
+<div class="p-px-3 p-pt-2 p-pb-0">
+  <button mat-raised-button color="primary" class="p-mb-2" (click)="onScheduleAppointmentLink()">
+    Create Appointment<i class="fa fa-calendar-o p-ml-2" aria-hidden="true" ></i>
+  </button>
+  <app-table
+    [table]="table"
+    [paginator]="true"
+    [rows]="5"
+    [denseCell]="true"
+    caption="Appointments"
+    [globalFilterFields]="['propertyInfo.address','appointmentStatus']"
+    [customSort]="true"
+    (sortFunction)="onCustomSort($event)"
+    [customSortFields]="customSortFields"
+  >
+   <ng-template #dateTemplate let-row="row">
+    <td>
+      <p>{{row?.date | date : 'EEEE, MMMM d'}}</p>
+      <p class="mat-h4">
+        {{getDate(row?.date, row?.startTime) | date : 'h:mm a'}} - {{getDate(row?.date, row?.endTime) | date : 'h:mm a'}}
+      </p>
+    </td>
+  </ng-template>
+  <ng-template #requestByUidTemplate let-row="row">
+    <td>
+        <app-entity-link [data]="'adminuid:' + row?.requestByUid" [agentsMap]="agentsMapComplete"></app-entity-link>
+    </td>
+  </ng-template>
+  <ng-template #apppointmentStatusTemplate let-row="row" let-col="col">
+    <td>
+      <p-chip
+        [ngClass]="
+        {
+          'confirmed-background': row?.appointmentStatus == AppointmentStatus.CONFIRMED,
+          'requested-background': row?.appointmentStatus == AppointmentStatus.REQUESTED,
+          'cancelled-background': row?.appointmentStatus == AppointmentStatus.CANCELLED
+        }"
+        [label]="row?.appointmentStatus | tableCell: col : 'appointmentStatus'">
+      </p-chip>
+    </td>
+  </ng-template>
+  <ng-template #requestStatusTemplate let-row="row" let-col="col">
+    <td [style.white-space]="'pre-wrap'">
+      {{row?.requestStatus | tableCell: col : 'requestStatus'}}
+    </td>
+  </ng-template>
+  <ng-template #viewButtonTemplate let-row="row">
+    <td fxLayout="column" fxLayoutAlign="center stretch">
+      <p-button pRipple type="button" label="View" styleClass="p-button-sm" classs="p-button-success" (onClick)="onViewAppointmentDetails(row)"></p-button>
+      <p-button pRipple type="button" label="Update" styleClass="p-button-sm p-button-warning p-text-white" class="p-mt-2 p-text-white" (onClick)="onUpdateStatus(row)"></p-button>
+    </td>
+  </ng-template>
+  <ng-template #sendInstructionsButtonTemplate let-row="row">
+    <td fxLayout="column" fxLayoutAlign="center stretch">
+      <p-button pRipple type="button" label="Send Instructions" styleClass="p-button-sm" classs="p-button-success" (onClick)="onSendShowingInstructions(row)"></p-button>
+    </td>
+  </ng-template>
+  </app-table>
+</div>

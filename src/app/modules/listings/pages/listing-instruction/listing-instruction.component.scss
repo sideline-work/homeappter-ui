@@ -1,0 +1,22 @@
+.listing-image-instruction {
+  width: 180px;
+  height: 100px;
+}
+
+
+:host ::ng-deep {
+
+  .active-background {
+    .p-chip {
+      background-color:#39ac73 ;
+      color: white;
+    }
+  }
+
+  .listing-instruction-info {
+    .p-card-content {
+      padding: 0px;
+    }
+  }
+
+}

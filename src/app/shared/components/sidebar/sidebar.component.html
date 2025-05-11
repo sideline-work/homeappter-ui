@@ -1,0 +1,14 @@
+<p-sidebar
+  styleClass="home-sidebar"
+  [modal]="false"
+  [visible]="visible"
+  position="right"
+  [showCloseIcon]="false"
+>
+  <button class="p-sidebar-close p-link" (click)="onClickSidebarClose()">
+    <i class="pi pi-arrow-right"></i>
+  </button>
+  <div class="sidebar-content-container">
+    <ng-content></ng-content>
+  </div>
+</p-sidebar>

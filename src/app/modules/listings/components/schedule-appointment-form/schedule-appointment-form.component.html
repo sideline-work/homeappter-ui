@@ -1,0 +1,193 @@
+<div class="form-group-wrapper">
+  <ng-container [formGroup]="formGroupValue" *ngIf="formGroupValue">
+    <div class="p-fluid">
+      <div class="p-field">
+          <label for="mlsNumber">MLS Number</label>
+          <input id="mlsNumber" type="text" pInputText  [disabled]="true" formControlName="mlsNumber">
+      </div>
+      <!-- <div class="p-field form-control">
+        <label for="hostAgentId">Host Agent Id</label>
+        <input id="hostAgentId" type="text" pInputText [disabled]="true" class="form-control" formControlName="hostAgentId">
+      </div> -->
+      <div class="p-field form-control">
+        <label for="message">Message *</label>
+        <textarea
+          id="message"
+          type="text"
+          rows="4"
+          [autoResize]="true"
+          formControlName="message"
+          pTooltip="{{ f['message'].errors | formErrors: 'message'}}"
+          tooltipStyleClass="error-tooltip"
+          [tooltipDisabled]="!(f['message'].invalid && f['message'].touched)"
+          [class.has-error]="f['message'].invalid && f['message'].touched"
+          pInputTextarea>
+        </textarea>
+      </div>
+      <div class="p-field form-control">
+        <label for="hostAgentId">Appointment Date *</label>
+        <app-calendar
+          formControlNameValue="appointmentDate"
+          placeholder="Appointment Date"
+          fixedTimeType="start"
+          [minDate]="minDate"
+          [maxDate]="maxDate"
+          [showButtonBar]="true"
+          appendTo="body"
+          pTooltip="{{ f['appointmentDate'].errors | formErrors: 'appointmentDate'}}"
+          tooltipStyleClass="error-tooltip"
+          [tooltipDisabled]="!(f['appointmentDate'].invalid && f['appointmentDate'].touched)"
+          [class.has-error]="f['appointmentDate'].invalid && f['appointmentDate'].touched"
+        >
+        </app-calendar>
+      </div>
+      <div class="p-field form-control">
+        <label for="hostAgentId">Appointment Time *</label>
+        <div *ngIf="isMember">
+          <p-dropdown
+            [options]="availableTimeSlot"
+            formControlName="appointmentTime"
+            optionLabel="label"
+            optionValue="value"
+            placeholder="{{formGroupValue.controls['appointmentDate'].value != null ?  'Select appointment time' : 'Select a date first'}}"
+            appendTo="body"
+            pTooltip="{{ f['appointmentTime'].errors | formErrors: 'appointmentTime'}}"
+            tooltipStyleClass="error-tooltip"
+            [disabled]="!f['appointmentDate'].value"
+            [tooltipDisabled]="!(f['appointmentTime'].invalid && f['appointmentTime'].touched)"
+            [class.has-error]="f['appointmentTime'].invalid && f['appointmentTime'].touched"
+            class="form-control">
+            <ng-template let-selectedItem pTemplate="selectedItem">
+              {{selectedItem?.value?.startDateTime | date: 'shortTime'}}
+              {{" - "}}
+              {{selectedItem?.value?.endDateTime | date: 'shortTime' }}
+            </ng-template>
+            <ng-template let-item pTemplate="item">
+              {{item?.value?.startDateTime | date: 'shortTime'}}
+              {{" - "}}
+              {{item?.value?.endDateTime | date: 'shortTime' }}
+            </ng-template>
+          </p-dropdown>
+        </div>
+        <div class="p-fluid p-formgrid p-grid" *ngIf="!isMember">
+          <div class="p-field p-col-6 p-md-6">
+            <app-calendar
+                formControlNameValue="startTime"
+                placeholder="Start Time"
+                [timeOnly]="true"
+                [readonlyInput]="false"
+                [formGroup]="formGroupValue"
+                [showButtonBar]="true"
+                appendTo="body"
+                hourFormat="12"
+                pTooltip="{{
+                  f['startTime'].errors ||
+                    (fgErrors | formErrorsFilter: 'startTimeGreaterThanEndTime')
+                    | formErrors: ['Start Time', 'End Time']
+                }}"
+                tooltipStyleClass="error-tooltip"
+                [tooltipDisabled]="
+                  !(
+                    (f['startTime'].invalid || fgErrors?.startTimeGreaterThanEndTime) &&
+                    f['startTime'].touched
+                  )
+                "
+                [styleClass]="{
+                  'has-error':
+                    (f['startTime'].invalid || fgErrors?.startTimeGreaterThanEndTime) &&
+                    f['startTime'].touched
+                }"
+              >
+              </app-calendar>
+          </div>
+          <div class="p-field p-col-6 p-md-6">
+            <app-calendar
+                formControlNameValue="endTime"
+                placeholder="End Time"
+                [timeOnly]="true"
+                [formGroup]="formGroupValue"
+                [showButtonBar]="true"
+                [disabled]="true"
+                class="form-control"
+                appendTo="body"
+                hourFormat="12"
+                pTooltip="{{
+                  (f['endTime'].errors | formErrors: 'endTime') ||
+                    ((fgErrors | formErrorsFilter: 'startTimeGreaterThanEndTime')
+                    | formErrors: ['Start Time', 'End Time'])
+                }}"
+                tooltipStyleClass="error-tooltip"
+                [tooltipDisabled]="
+                  !(
+                    (f['endTime'].invalid || fgErrors?.startTimeGreaterThanEndTime) &&
+                    f['endTime'].touched
+                  )
+                "
+                [styleClass]="{
+                  'has-error':
+                    (f['endTime'].invalid || fgErrors?.startTimeGreaterThanEndTime) &&
+                    f['endTime'].touched
+                }"
+              >
+              </app-calendar>
+          </div>
+        </div>
+        <!-- <div class="p-field p-my-3">
+          <label for="manualRequest" class="p-mr-3">Manual Request? </label>
+          <p-inputSwitch id="manualRequest" formControlName="manualRequest"></p-inputSwitch>
+        </div> -->
+        <div *ngIf="(ROLES.ADMIN | hasRole) && isManualRequest == true">
+          <div class="p-field">
+            <label for="requestorMemberMLSID">Requestor's Member MLS Id *</label>
+            <input
+              id="requestorMemberMLSID"
+              type="text"
+              pTooltip="{{ f['requestorMemberMLSID'].errors | formErrors: 'requestorMemberMLSID'}}"
+              tooltipStyleClass="error-tooltip"
+              [tooltipDisabled]="!(f['requestorMemberMLSID'].invalid && f['requestorMemberMLSID'].touched)"
+              [class.has-error]="f['requestorMemberMLSID'].invalid && f['requestorMemberMLSID'].touched"
+              pInputText
+              formControlName="requestorMemberMLSID">
+          </div>
+          <div class="p-field">
+            <label for="requestorName">Requestor's Name *</label>
+            <input
+              id="requestorName"
+              type="text"
+              pTooltip="{{ f['requestorName'].errors | formErrors: 'requestorName'}}"
+              tooltipStyleClass="error-tooltip"
+              [tooltipDisabled]="!(f['requestorName'].invalid && f['requestorName'].touched)"
+              [class.has-error]="f['requestorName'].invalid && f['requestorName'].touched"
+              pInputText
+              formControlName="requestorName">
+          </div>
+          <div class="p-field">
+            <label for="requestorOfficeName">Requestor's Office Name *</label>
+            <input
+              id="requestorOfficeName"
+              type="text"
+              pTooltip="{{ f['requestorOfficeName'].errors | formErrors: 'requestorOfficeName'}}"
+              tooltipStyleClass="error-tooltip"
+              [tooltipDisabled]="!(f['requestorOfficeName'].invalid && f['requestorOfficeName'].touched)"
+              [class.has-error]="f['requestorOfficeName'].invalid && f['requestorOfficeName'].touched"
+              pInputText
+              formControlName="requestorOfficeName">
+          </div>
+          <div class="p-field form-control">
+            <label for="remarks">Remarks</label>
+            <textarea
+              id="remarks"
+              type="text"
+              rows="4"
+              [autoResize]="true"
+              formControlName="remarks"
+
+              pInputTextarea>
+            </textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+    <small>(*) Required fieldsss</small>
+  </ng-container>
+</div>

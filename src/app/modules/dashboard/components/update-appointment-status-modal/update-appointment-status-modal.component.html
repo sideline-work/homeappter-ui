@@ -1,0 +1,10 @@
+<app-modal [header]="'Update Appointment Status'" [styleClass]="'modal-xlg'">
+  <div fxFlex fxFill fxLayout="row" fxLayoutAlign="space-around start">
+    <app-update-appointment-status-form [appointment]="appointment" [formGroupValue]="updateAppointmentForm"></app-update-appointment-status-form>
+  </div>
+  <ng-template #modalFooter>
+    <button mat-raised-button color="primary" [disabled]="updateAppointmentForm.pristine" (click)="onUpdateAppointment()">Update Appointment</button>
+    <button mat-raised-button mat-dialog-close>Close</button>
+  </ng-template>
+</app-modal>
+<app-dialog></app-dialog>

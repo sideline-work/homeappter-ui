@@ -1,0 +1,25 @@
+<div class="card overview-box" [ngStyle]="{background: overviewItem?.background}">
+    <div class="item-details p-d-flex p-ai-center">
+      <p class="item-count p-mr-2">{{overviewItem?.value}}</p>
+      <p class="item-title">{{overviewItem?.title}}</p>
+    </div>
+    <!-- <div class="item-title p-d-flex p-ai-center p-jc-center">
+      <p>{{overviewItem?.title}}</p>
+    </div> -->
+    <div class="item-icon p-d-flex p-ai-center">
+      <i [class]="overviewItem?.icon"></i>
+    </div>
+</div>
+
+
+<!-- <div fxLayout="row" fxLayoutAlign="center center" [ngStyle]="{background: overviewItem?.background}">
+  <div>
+    <h1 class="count-title">{{overviewItem?.value}}</h1>
+  </div>
+  <div>
+    <h3>{{overviewItem?.title}}</h3>
+  </div>
+  <div>
+    <i [class]="overviewItem?.icon"></i>
+  </div>
+</div> -->

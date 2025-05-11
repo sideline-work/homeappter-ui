@@ -1,0 +1,43 @@
+<mat-card class="appoinment-card p-p-0">
+  <mat-card-header fxLayout="row"
+    class="p-px-3 p-pt-2 p-pb-0"
+    fxLayoutAlign="space-between center"
+    [ngClass]="{
+      'card-header-success': appointment?.appointmentStatus == 'CONFIRMED',
+      'card-header-primary': appointment?.appointmentStatus == 'REQUESTED',
+      'card-header-warning': appointment?.appointmentStatus == 'CANCELLED'
+    }"
+    >
+    <mat-icon mat-card-avatar class="card-header-icon">
+      {{
+        appointment?.appointmentStatus == 'CONFIRMED' ? 'check_circle' :
+        appointment?.appointmentStatus == 'REQUESTED' ? 'check' :
+        appointment?.appointmentStatus == 'CANCELLED' ? 'cancel' : null
+      }}
+    </mat-icon>
+    <mat-card-title>
+      {{getDateFromTime(appointment?.startTime) | date: 'shortTime'}}
+      {{" - "}}
+      {{getDateFromTime(appointment?.endTime) | date: 'shortTime' }}
+    </mat-card-title>
+    <mat-card-subtitle><p>{{appointment?.date| date: 'EEEE, MMMM d'}}</p></mat-card-subtitle>
+    <div fxFlex></div>
+    <div class="p-p-0">
+      <h3>{{appointment?.appointmentStatus}}</h3>
+    </div>
+  </mat-card-header>
+  <!-- <mat-divider></mat-divider> -->
+  <div fxLayout="row" fxLayoutAlign="space-between start">
+    <div class="list-view-photo p-p-0">
+      <img [src]="appointment?.appointmentInfo?.thumbnailUrl" class="listing-item-card-list-view" appImgFallback="assets/images/no-image.png">
+    </div>
+    <div class="p-p-2 appointment-property-details p-pt-4">
+      <p>{{appointment?.appointmentInfo?.fullAddress}}</p>
+      <p>{{appointment?.appointmentInfo?.price}}</p>
+      <p>{{appointment?.appointmentInfo?.propertyStatus}}</p>
+    </div>
+  </div>
+  <div  fxLayout="row" fxLayoutAlign="center center" class="appointment-click-more">
+    <p class="p-mt-2 p-mb-1">For more details, click on this calendar item</p>
+  </div>
+</mat-card>

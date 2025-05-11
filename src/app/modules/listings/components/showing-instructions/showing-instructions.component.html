@@ -1,0 +1,262 @@
+<div id="print-section" [hidden]="true">
+  <app-listing-overview [listing]="listing"></app-listing-overview>
+  <app-showing-instruction-overview
+    [showingInstruction]="showingInstruction"
+    [isPrintView]="true">
+  </app-showing-instruction-overview>
+</div>
+
+<div class="card">
+  <form [formGroup]="listingInstructionsForm">
+    <div class="p-px-2">
+      <div fxLayout="row" fxLayoutAlign="space-between stretch" fxLayoutGap="20px">
+        <p class="mat-title">Showing Details</p>
+        <div align="end">
+          <button pButton pRipple styleClass="p-button-lg"
+          class="p-button-raised p-mr-6"
+          label="Print Showing Instruction"
+          printSectionId="print-section"
+          ngxPrint
+          [useExistingCss]="true"></button>
+          <!-- <p>{{listingInstructionsForm?.invalid}}</p> -->
+          <button pButton pRipple styleClass="p-button-lg"
+            class="p-button-raised p-mr-2 p-button p-button-success"
+            cdkFocusInitial label="Draft"
+            [disabled]="!enableDraft"
+            (click)="onDraft()"></button>
+          <button pButton pRipple styleClass="p-button-lg" class="p-button-raised p-mr-2" cdkFocusInitial [disabled]="listingInstructionsForm?.invalid" label="Save" (click)="onSave()"></button>
+          <button pButton pRipple styleClass="p-button-lg" class="p-button-raised p-button-plain" label="Cancel" (click)="onCancel()"></button>
+        </div>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="20px">
+        <div class="p-fluid" fxFill fxFlex="35" fxLayout="column" fxLayoutGap="20px">
+          <div class="p-field">
+            <label>Approval Type</label>
+            <p-dropdown [options]="approvalTypes" placeholder="Select type" formControlName="approvalType" appendTo="body" class="form-control"></p-dropdown>
+          </div>
+          <div class="p-field">
+            <label>Minimum Hours Before Notice</label>
+            <p-dropdown [options]="hrsBeforeNoticeOptions" placeholder="Select hours" formControlName="minsBeforeNotice" appendTo="body" class="form-control"></p-dropdown>
+          </div>
+          <div class="p-field">
+            <label>Showing Instructions</label>
+            <div class="p-col-12 p-md-12 p-px-0">
+              <textarea
+                [rows]="8"
+                pInputTextarea
+                [autoResize]="true"
+                formControlName="showingInstructions"
+                pTooltip="{{ f['showingInstructions'].errors | formErrors: 'showingInstructions'}}"
+                tooltipStyleClass="error-tooltip"
+                [tooltipDisabled]="!(f['showingInstructions'].invalid && f['showingInstructions'].touched)"
+                [class.has-error]="f['showingInstructions'].invalid && f['showingInstructions'].touched"
+                class="form-control">
+              </textarea>
+            </div>
+          </div>
+          <div class="p-field">
+            <label>Private Notes</label>
+            <div class="p-col-12 p-md-12 p-px-0">
+              <textarea
+                [rows]="5"
+                pInputTextarea
+                [autoResize]="true"
+                formControlName="privateNotes"
+                class="form-control">
+              </textarea>
+            </div>
+          </div>
+        </div>
+        <div class="p-fluid" fxFlex="35" fxLayout="column" fxLayoutGap="20px">
+          <div class="p-field">
+            <label>Home Status</label>
+            <p-dropdown [options]="homeStatuses" placeholder="Select status" formControlName="homeStatus" appendTo="body" class="form-control"></p-dropdown>
+          </div>
+          <div class="p-field">
+            <label>Showing Duration</label>
+            <p-dropdown [options]="showingDurationOptions" placeholder="Select duration" formControlName="showingDuration" appendTo="body" class="form-control"></p-dropdown>
+          </div>
+          <div class="p-field">
+            <label>Showing Hours</label>
+            <div class="p-fluid p-formgrid p-grid">
+              <div class="p-field p-col-5 p-md-5">
+                <app-calendar
+                    formControlNameValue="startTime"
+                    placeholder="Start Time"
+                    [timeOnly]="true"
+                    [formGroup]="listingInstructionsForm"
+                    [showButtonBar]="true"
+                    [readonlyInput]="false"
+                    appendTo="body"
+                    class="form-control"
+                    hourFormat="12"
+                    pTooltip="{{
+                      f['startTime'].errors ||
+                        (fgErrors | formErrorsFilter: 'startTimeGreaterThanEndTime')
+                        | formErrors: ['Start Time', 'End Time']
+                    }}"
+                    tooltipStyleClass="error-tooltip"
+                    [tooltipDisabled]="
+                      !(
+                        (f['startTime'].invalid || fgErrors?.startTimeGreaterThanEndTime) &&
+                        f['startTime'].touched
+                      )
+                    "
+                    [styleClass]="{
+                      'has-error':
+                        (f['startTime'].invalid || fgErrors?.startTimeGreaterThanEndTime) &&
+                        f['startTime'].touched
+                    }"
+                  >
+                  </app-calendar>
+              </div>
+              <div class="p-field p-col-5 p-md-5">
+                <app-calendar
+                    formControlNameValue="endTime"
+                    placeholder="End Time"
+                    [timeOnly]="true"
+                    [formGroup]="listingInstructionsForm"
+                    [showButtonBar]="true"
+                    [readonlyInput]="false"
+                    class="form-control"
+                    appendTo="body"
+                    hourFormat="12"
+                    pTooltip="{{
+                      (f['endTime'].errors | formErrors: 'endTime') ||
+                        ((fgErrors | formErrorsFilter: 'startTimeGreaterThanEndTime')
+                        | formErrors: ['Start Time', 'End Time'])
+                    }}"
+                    tooltipStyleClass="error-tooltip"
+                    [tooltipDisabled]="
+                      !(
+                        (f['endTime'].invalid || fgErrors?.startTimeGreaterThanEndTime) &&
+                        f['endTime'].touched
+                      )
+                    "
+                    [styleClass]="{
+                      'has-error':
+                        (f['endTime'].invalid || fgErrors?.startTimeGreaterThanEndTime) &&
+                        f['endTime'].touched
+                    }"
+                  >
+                  </app-calendar>
+              </div>
+            </div>
+          </div>
+          <div class="p-field p-col p-mb-0">
+            <div class="p-field-checkbox">
+              <p-checkbox
+                formControlName="overlapping"
+                [binary]="true"
+                inputId="overlapping">
+              </p-checkbox>
+              <label for="overlapping">Allowed Overlapping?
+                <!-- <i class="pi pi-bell p-ml-2"></i> -->
+              </label>
+            </div>
+          </div>
+          <div class="p-field p-col p-mt-0">
+            <div class="p-field-checkbox">
+              <p-checkbox
+                formControlName="accompaniedShowing"
+                [binary]="true"
+                inputId="accompaniedShowing">
+              </p-checkbox>
+              <label for="accompaniedShowing">Accompanied Showing?
+                <!-- <i class="pi pi-bell p-ml-2"></i> -->
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="p-px-2">
+      <div fxFill fxLayout="row" fxLayoutAlign="start center" class="p-mt-2">
+        <p class="mat-title p-mr-3 p-pt-3">Contacts</p>
+        <button
+          pButton pRipple
+          type="button"
+          icon="pi pi-plus"
+          label="Add New Contact"
+          class="p-button-outlined p-button-sm"
+          (click)="openContactDialog()">
+        </button>
+        <i class="p-ml-2 p-text-medium">(Set at least one contact to save)</i>
+      </div>
+      <div class="p-grid">
+        <ng-container *ngFor="let item of propertyPreference?.contactList">
+          <div class="p-col-12 p-md-4">
+            <app-preference-contact-details-card
+              [item]="item"
+              (onEditContact)="onEditContact($event)"
+              (onDeleteContact)="onDeleteContact($event)">
+            </app-preference-contact-details-card>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+
+    <div class="p-px-2 p-mt-5">
+      <div fxFill fxLayout="row" fxLayoutAlign="start center" class="p-mt-2">
+        <p class="mat-title p-mr-3 p-pt-3">Block Time</p>
+        <button
+          pButton pRipple
+          type="button"
+          icon="pi pi-plus"
+          label="Add New Block Time"
+          class="p-button-outlined p-button-sm"
+          (click)="openBlockDateDialog()">
+        </button>
+        <i class="p-ml-2 p-text-medium">(Set at least one block time to save)</i>
+      </div>
+      <div class="p-grid">
+        <div class="p-col-12 p-md-6">
+          <app-block-time-table
+            [preferenceBlockDates]="propertyPreference?.blockDateList"
+            (onEditBlockDate)="onEditBlockDate($event)"
+            (onDeleteBlockDate)="onDeleteBlockDate($event)"
+          >
+          </app-block-time-table>
+        </div>
+
+        <!-- <ng-container *ngFor="let item of propertyPreference?.blockDateList">
+          <div class="p-col-12 p-md-2">
+            <app-preference-block-date-details-card
+              [item]="item"
+              (onEditBlockDate)="onEditBlockDate($event)"
+              (onDeleteBlockDate)="onDeleteBlockDate($event)">
+            >
+            </app-preference-block-date-details-card>
+          </div>
+        </ng-container> -->
+      </div>
+    </div>
+    <div class="p-px-2 p-mt-5">
+      <div fxFill fxLayout="row" fxLayoutAlign="start center" class="p-mt-2">
+        <p class="mat-title p-mr-3 p-pt-3">Property Access</p>
+        <button
+          pButton pRipple
+          type="button"
+          label="Add Access"
+          icon="pi pi-plus"
+          class="p-button-outlined p-button-sm"
+          (click)="openAccessDialog()">
+        </button>
+        <i class="p-ml-2 p-text-medium">(Set at least one access to save)</i>
+      </div>
+      <div class="p-grid p-pt-2">
+        <ng-container *ngFor="let item of propertyPreference?.accessList">
+          <div class="p-col-12 p-md-4">
+            <app-preference-access-card
+              [item]="item"
+              (onEditAccess)="onEditAccess($event)"
+              (onDeleteAccess)="onDeleteAccess($event)"
+            >
+            </app-preference-access-card>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </form>
+</div>
+<app-dialog></app-dialog>

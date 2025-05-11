@@ -1,0 +1,19 @@
+<mat-toolbar color="primary" class="header-container" fxLayout="row" >
+  <ng-content></ng-content>
+  <a class="app-logo p-d-flex p-ai-center p-jc-center p-ml-3" href="/">
+    <img alt="logo" class="p-as-center" src="assets/images/homeappter_logo_vertical.png">
+  </a>
+  <span class="header-spacer"></span>
+  <mat-card class="mat-card-primary-background">
+    <button mat-icon-button [matMenuTriggerFor]="menu"
+      #menuTrigger="matMenuTrigger" (click)="menuTrigger.openMenu()">
+        <img alt="logo" *ngIf="(memberDetails?.photo)"   mat-card-avatar [src]="memberDetails.photo">
+        <img alt="logo" *ngIf="(!memberDetails?.photo)" mat-card-avatar 
+        src="assets/images/blank-profile-circle.png"
+        >
+    </button>
+  </mat-card>
+  <mat-menu #menu="matMenu" [overlapTrigger]="false" fxLayoutAlign="flex-end center" class="mat-elevation-z0">
+    <app-profile-card></app-profile-card>
+  </mat-menu>
+</mat-toolbar>

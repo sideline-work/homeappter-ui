@@ -1,0 +1,17 @@
+<div class="p-field p-grid">
+  <mat-checkbox class="p-col-2 p-p-2" [(ngModel)]="enabled" (change)="onChangeEnabled()"></mat-checkbox>
+  <div class="p-col-10 p-md-10">
+    <p-dropdown
+      [appendTo]="appendTo"
+      [filter]="filter"
+      [(ngModel)]="selectedValue"
+      (onChange)="onChangeEvent($event)"
+      [placeholder]="placeholder"
+      [options]="options"
+      [ngClass]="styleClass"
+      [disabled]="!enabled"
+      optionValue="value"
+    >
+    </p-dropdown>
+  </div>
+</div>

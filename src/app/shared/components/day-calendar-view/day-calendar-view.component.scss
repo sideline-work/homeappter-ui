@@ -1,0 +1,14 @@
+
+
+
+:host ::ng-deep {
+  .fc-time-grid-container {
+    height: 80vh;
+  }
+  // .fc-ltr {
+  //   width: 80%;
+  // }
+  .fc-day-grid {
+    display: none;
+  }
+}

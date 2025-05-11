@@ -1,0 +1,65 @@
+.listing-item-details-field .p-grid > [class*=p-col] {
+  // padding-bottom: 0px;
+  // padding-top: 5px;
+}
+
+.listing-item-details-field .p-grid > label {
+  font-weight: bold;
+}
+
+.listing-item-details-field {
+  padding-left: 1.5rem;
+}
+
+.listing-image-modal{
+  height: 319px;
+  //width: 500px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.listing-image-thumbnail{
+  width: 70px;
+  height: 40px;
+}
+
+.listing-no-images {
+  width: 60%;
+  height: 319px;
+  object-fit: cover;
+}
+
+:host ::ng-deep {
+  .listing-agent .p-card-body{
+    height: 150px;
+  }
+  .listing-info .p-card-body{
+    height: 147px;
+  }
+  .listing-info label, .listing-info p{
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+}
+
+
+
+
+// .listing-agent{
+//   width: 100%;
+// }
+.listing-price {
+  background-color: #919191;
+  color: white;
+  padding: 6px;
+}
+
+
+.with-icon {
+    display: flex;
+    align-items: center;
+    vertical-align: middle;
+    .fa {
+      font-size: 20px;
+    }
+}

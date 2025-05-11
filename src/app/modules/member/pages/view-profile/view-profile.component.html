@@ -1,0 +1,8 @@
+<div fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="center center" class="profile-page">
+  <div fxFlex="30" fxLayout="column" fxLayoutAlign="center center">
+    <app-profile-summary [member]="member"></app-profile-summary>
+  </div>
+  <div FxFill fxFlex="70" fxLayout="column" fxLayoutAlign="center center">
+    <app-profile-details [(member)]="member" class="profile-details"></app-profile-details>
+  </div>
+</div>

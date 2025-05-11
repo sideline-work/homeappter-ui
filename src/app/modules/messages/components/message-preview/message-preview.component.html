@@ -1,0 +1,18 @@
+<div fxLayout="row" fxLayoutAlign="start center" class="p-p-0 message-preview" (click)="onClickRoom()">
+  <div fxFill fxFlex="25" fxLayout="column" fxLayoutAlign="center center">
+    <!-- <p-avatar [image]="message?.appointmentInfo?.thumbnailUrl" size="large" shape="circle"></p-avatar> -->
+  </div>
+  <div fxFill fxFlex="75" fxLayout="column" fxLayoutAlign="start start" class="p-py-0" fxLayoutGap="0px">
+    <p class="mat-body-strong">{{(message?.roomname == currentUser?.memberName) ? message?.createdBy : message?.roomname}}</p>
+
+    <!-- <p class="mat-body-strong">{{message?.appointmentInfo?.fullAddress}}</p>
+    <p class="mat-small">
+      {{getDateFromTime(message?.startTime) | date: 'shortTime'}}
+      {{" - "}}
+      {{getDateFromTime(message?.endTime) | date: 'shortTime' }}
+    , {{message?.date| date: 'EEEE, MMMM d'}}</p>
+    <p class="mat-small p-mb-0">Last message at
+      {{message?.date| date: 'M/d/yy, h:mm a'}}
+    </p> -->
+  </div>
+</div>

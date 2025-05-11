@@ -1,0 +1,25 @@
+<div *ngIf="(ROLES.ADMIN | hasRole)">
+  <button mat-raised-button color="primary" class="p-mb-2 p-ml-3 p-mt-2" (click)="onBackToAdminDashboard()">
+    Back to Dashboard<i class="pi pi-table p-ml-2" aria-hidden="true" ></i>
+  </button>
+</div>
+<!-- <div align="end" class="p-pr-4">
+  <button mat-raised-button color="primary" (click)="onOpenAddNewListing()">Add New Listing<i class="fa fa-plus p-ml-2" aria-hidden="true" ></i>
+  </button>
+</div> -->
+<p-tabView [(activeIndex)]="tab">
+  <!-- My Listings Tab -->
+  <p-tabPanel header="My Listing" *ngIf="!(ROLES.ADMIN | hasRole)">
+    <app-my-listings></app-my-listings>
+  </p-tabPanel>
+
+  <!-- Search Listings Tab -->
+
+  <p-tabPanel header="Search Listing">
+    <app-search-listings></app-search-listings>
+  </p-tabPanel>
+
+</p-tabView>
+<!-- Router outlet for listing Modal-->
+<router-outlet></router-outlet>
+<app-alert [alertKey]="alertKey"></app-alert>

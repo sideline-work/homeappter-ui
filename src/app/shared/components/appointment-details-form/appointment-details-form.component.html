@@ -1,0 +1,81 @@
+<div fxLayout="column" class="p-px-3" fxLayoutGap="20px">
+  <div fxFlex fxFill fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="space-around start" fxLayoutGap="20px">
+    <div fxFill fxFlex="60" fxLayout="column" fxLayoutAlign="center stretch" class="p-pl-3 p-pt-3">
+      <img mat-card-image [src]="appointment?.appointmentInfo?.thumbnailUrl" class="listing-image-modal" appImgFallback="assets/images/no-image.png">
+    </div>
+    <div fxFill fxFlex="40" fxLayout="column" fxLayoutAlign="center stretch" fxLayoutGap="20px">
+      <p-card styleClass="listing-agent" fxFlex="50" fxLayout="column">
+        <div fxFill fxLayout="row" fxLayoutAlign="center center">
+          <app-entity-link [data]="'agentOnCard:' + appointment?.hostMemberMlsId" [showContactDetails]="true"></app-entity-link>
+        </div>
+      </p-card>
+      <p-card styleClass="listing-info" fxFlex="50" fxLayout="column">
+        <div class="p-px-3">
+          <div class="p-grid p-ai-center">
+            <label class="p-col-6 p-md-6 mat-h3 p-text-bold">MLS Number:</label>
+            <label class="p-col-6 p-md-6">{{appointment?.appointmentInfo?.mlsNumber}}</label>
+          </div>
+          <div class="p-grid p-ai-center">
+            <label class="p-col-6 p-md-6 mat-h3 p-text-bold">Property Status:</label>
+            <label class="p-col-6 p-md-6">{{appointment?.appointmentInfo?.propertyStatus}}</label>
+          </div>
+          <div class="p-grid p-ai-center p-py-0">
+            <label class="p-col-6 p-md-6 mat-h3 p-text-bold">Price:</label>
+            <label class="p-col-6 p-md-6">{{appointment?.appointmentInfo?.price | currency}}</label>
+          </div>
+          <!-- <div class="p-grid p-ai-center">
+            <label class="p-col-6 p-md-6 mat-h3 p-text-bold">Office:</label>
+            <label class="p-col-6 p-md-6">{{listing?.listOfficeName}}</label>
+          </div> -->
+        </div>
+      </p-card>
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+  <div fxLayout="column" fxLayoutAlign="space-around start" fxLayoutGap="08px">
+    <div fxLayout="row" fxLayout.lt-sm="column" >
+      <p class="mat-title p-mr-4">{{appointment?.appointmentInfo?.fullAddress}}</p>
+      <p-chip
+        [ngClass]="
+        {
+          'confirmed-background': appointment?.appointmentStatus == AppointmentStatus.CONFIRMED,
+          'requested-background': appointment?.appointmentStatus == AppointmentStatus.REQUESTED,
+          'cancelled-background': appointment?.appointmentStatus == AppointmentStatus.CANCELLED
+        }"
+        [label]="appointment?.appointmentStatus">
+    </p-chip>
+    </div>
+    <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="10px">
+      <div class="listing-price">
+        <h4 class="listing-card-text p-pb-0 p-mb-0">Appointment Date: {{appointment?.date | date}}</h4>
+      </div>
+      <div class="listing-price">
+        <h4 class="listing-card-text p-pb-0 p-mb-0">Appointment Time:
+          {{getDateFromTime(appointment?.startTime) | date: 'shortTime'}}
+          {{" - "}}
+          {{getDateFromTime(appointment?.endTime) | date: 'shortTime' }}
+        </h4>
+      </div>
+    </div>
+    <!-- <ckeditor [editor]="Editor" data="<p>Hello, world!</p>" (ready)="onReady($event)"></ckeditor> -->
+  </div>
+  <!-- <mat-divider></mat-divider> -->
+  <div fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="10px"
+    *ngIf="(appointment.appointmentStatus == 'REQUESTED' || appointment.appointmentStatus == 'CONFIRMED') && (ROLES.MEMBER | hasRole)"
+  >
+    <label class="mat-title" for="remarks">Cancellation Remarks</label>
+    <textarea
+      id="remarks"
+      [(ngModel)]="remarks"
+      [rows]="7"
+      [cols]="50"
+      pInputTextarea
+      [autoResize]="false"
+      class="form-control"
+      (ngModelChange)="changeValue($event)"
+    >
+    </textarea>
+  </div>
+  <app-showing-instruction-overview [showingInstruction]="showingInstruction"></app-showing-instruction-overview>
+</div>
+

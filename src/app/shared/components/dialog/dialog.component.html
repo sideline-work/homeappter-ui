@@ -1,0 +1,39 @@
+<!-- dialog type is selected based on key -->
+
+<!-- confirm dialog -->
+<p-confirmDialog
+  [style]="{ width: '50vw' }"
+  [styleClass]="styleClass"
+  [key]="key + '-confirm'"
+  acceptIcon=""
+  rejectIcon=""
+></p-confirmDialog>
+
+<!-- info dialog -->
+<p-confirmDialog
+  [style]="{ width: '50vw' }"
+  [styleClass]="'info-dialog' + ' ' + styleClass"
+  [key]="key + '-info'"
+  appendTo="body"
+  acceptIcon=""
+  rejectIcon=""
+>
+</p-confirmDialog>
+
+<!-- question dialog -->
+<p-confirmDialog
+  [style]="{ width: '50vw' }"
+  [styleClass]="'question-dialog' + ' ' + styleClass"
+  [key]="key + '-question'"
+  acceptIcon=""
+  rejectIcon=""
+></p-confirmDialog>
+
+<!-- error dialog -->
+<p-confirmDialog
+  [style]="{ width: '50vw' }"
+  [styleClass]="'error-dialog' + ' ' + styleClass"
+  [key]="key + '-error'"
+  acceptIcon=""
+  rejectIcon=""
+></p-confirmDialog>

@@ -1,0 +1,119 @@
+<div>
+  <!-- table -->
+  <div [ngStyle]="{ height: tableHeight !== undefined ? tableHeight : 'auto' }"
+    [ngClass]="{'dense-table-body': dense, 'dense-cell': denseCell}"
+    >
+    <p-table
+      styleClass="report-table"
+      [columns]="table?.columns"
+      [value]="table?.rows"
+      [resizableColumns]="true"
+      [paginator]="true"
+      [rows]="rows"
+      [globalFilterFields]="globalFilterFields"
+      [selectionMode]="selectionMode"
+      [(selection)]="selectedRow"
+      [paginator]="paginator"
+      [showCurrentPageReport]="true"
+      [currentPageReportTemplate]="pageReportTemplate"
+      [scrollable]="tableHeight !== undefined"
+      [sortField]="table?.sortField"
+      [sortOrder]="table?.sortOrder != null ? table.sortOrder : 1"
+      scrollHeight="flex"
+      [sortMode]="sortMode"
+      (sortFunction)="onCustomSort($event)"
+      [customSort]="customSort"
+      #reportTable
+    >
+      <!-- col group for resizing; required if scrollable property is enabled -->
+      <ng-template pTemplate="caption" *ngIf="caption">
+          {{caption}}
+      </ng-template>
+      <ng-template pTemplate="colgroup" let-columns>
+        <colgroup>
+          <col *ngFor="let col of columns" />
+        </colgroup>
+      </ng-template>
+      <!-- columns -->
+      <ng-template pTemplate="header" let-col>
+        <tr>
+          <th *ngFor="let col of table?.columns" [pSortableColumn]="col.dataField" pResizableColumn [style]="col?.style" #header>
+            <div class="p-d-flex p-jc-between p-ai-center">
+              <span  [style.white-space]="'pre-wrap'">{{ col | tableHeader }}</span>
+              <p-sortIcon *ngIf="col.dataField" [field]="col.dataField"></p-sortIcon>
+              <ng-container *ngIf="col.columnFilter">
+                <p-columnFilter *ngIf="col.columnFilterType=='multiselect'" [field]="col.dataField" matchMode="in" display="menu" [showMatchModes]="false" [showOperator]="false" [showAddButton]="false" class="p-ml-auto">
+                  <ng-template pTemplate="header">
+                      <div class="p-px-3 p-pt-3 p-pb-0">
+                          <span class="p-text-bold">{{col.columnFilterHeader}}</span>
+                      </div>
+                  </ng-template>
+                  <ng-template pTemplate="filter" let-value let-filter="filterCallback">
+                    <p-multiSelect [ngModel]="value" [options]="col.columnFilterOptions" placeholder="Any" (onChange)="filter($event.value);valChange($event)" optionLabel="label" optionValue="value">
+                        <ng-template let-option pTemplate="item">
+                            <div class="p-multiselect-representative-option">
+                                <!-- <img [alt]="option.label" src="assets/showcase/images/demo/avatar/{{option.image}}" width="32" style="vertical-align: middle" /> -->
+                                <span class="p-ml-1">{{option.label}}</span>
+                            </div>
+                        </ng-template>
+                    </p-multiSelect>
+                  </ng-template>
+                </p-columnFilter>
+
+                <p-columnFilter *ngIf="col.columnFilterType =='date'" type="date" [field]="col.dataField" display="menu" class="p-ml-auto">
+                  <ng-template pTemplate="filter" let-value let-filter="filterCallback" >
+                    <p-calendar
+                      #fd
+                      [ngModel]="value"
+                      dataType="string"
+                      (onSelect)="filter(fd.value)">
+                    </p-calendar>
+                  </ng-template>
+                </p-columnFilter>
+              </ng-container>
+
+              <!-- <p-columnFilter *ngIf="col.columnFilter" type="text" [field]="col.columnFilter" display="menu" class="p-ml-auto"></p-columnFilter> -->
+            </div>
+            <span
+              *ngIf="getTemplate(col.colHeaderTemplateRefName) && table.rows.length !== 0"
+              (click)="stopSortPropagation($event)"
+              class="p-mt-2"
+            >
+              <ng-container
+                *ngTemplateOutlet="
+                  getTemplate(col.colHeaderTemplateRefName);
+                  context: { $implicit: col }
+                "
+              ></ng-container>
+            </span>
+          </th>
+        </tr>
+      </ng-template>
+      <!-- rows -->
+      <ng-template pTemplate="body" let-row>
+        <tr>
+          <td
+            *ngFor="let col of table?.columns"
+            [style.text-align]="col.textAlign ? col.textAlign : 'left'"
+            [style.white-space]="col.wrap ? 'pre-wrap': 'nowrap'"
+            (click)="onRowSelected(row)"
+          >
+            <ng-container [ngSwitch]="col.dataType">
+              <ng-container *ngSwitchCase="'templateRef'">
+                <ng-container
+                  *ngTemplateOutlet="
+                    getTemplate(col.colTemplateRefName);
+                    context: { row: row, col: col }
+                  "
+                ></ng-container>
+              </ng-container>
+              <ng-container *ngSwitchDefault>
+                {{ row | tableCell: col }}
+              </ng-container>
+            </ng-container>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>

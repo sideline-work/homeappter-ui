@@ -1,0 +1,20 @@
+<div class="p-grid">
+  <div class="p-col-3 p-md-3 p-sm-5 p-xs-6 list-view-photo">
+      <img [src]="listing?.photoUrl" class="listing-item-card-list-view" appImgFallback="assets/images/no-image.png">
+  </div>
+  <div class="p-col-5 p-md-5 p-sm-4 p-p-4">
+    <div class="address-title">
+      <!-- <h3 class="listing-card-text p-text-bold">{{listing.streetNumber + " " +  listing.streetName  + " " + listing.city}}</h3> -->
+      <p class="listing-card-text">{{listing.fullAddress}}</p>
+    </div>
+    <!-- <div>
+      <h4>
+        {{listing.address.county}}
+      </h4>
+    </div> -->
+  </div>
+  <div class="p-col-4 p-md-4 p-sm-3 p-p-4">
+    <p class="listing-card-text">{{listing.listPrice | currency}}</p>
+    <button pButton	class="p-button-warning p-px-3 p-mt-1" label="View" (click)="onClickView(listing.listingId)"></button>
+  </div>
+</div>

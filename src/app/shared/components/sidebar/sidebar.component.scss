@@ -1,0 +1,15 @@
+@import 'partials/_variables';
+
+:host ::ng-deep {
+  .home-sidebar {
+    margin-top: $homeHeaderHeight;
+    height: $homeBodyHeight;
+    .p-sidebar-close {
+      left: 0;
+      top: 8px;
+      .pi-arrow-right {
+        font-size: 24px;
+      }
+    }
+  }
+}

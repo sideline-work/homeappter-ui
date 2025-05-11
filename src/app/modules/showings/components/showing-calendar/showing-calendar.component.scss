@@ -1,0 +1,43 @@
+@import 'partials/_variables';
+
+:host ::ng-deep {
+  .fc .fc-event {
+    &.fc-appointment {
+      opacity: 1;
+
+      .fc-time {
+        color: white;
+        font-style: normal;
+      }
+
+      .fc-title {
+        color: white;
+        font-style: normal;
+      }
+
+      &.fc-requested {
+        background-color: $requestedAppointmentStatusBgColor;
+      }
+
+      &.fc-confirmed {
+        background-color: $confirmedAppointmentStatusBgColor;
+      }
+
+      &.fc-cancelled {
+        background-color: $cancelledAppointmentStatusBgColor;
+      }
+    }
+  }
+
+  // .fc .fc-daygrid-day-frame {
+  //   cursor: pointer;
+  // }
+
+  // .fc-cell-highlight {
+  //   color: rgba(188, 232, 241, 0.3);
+  // }
+
+  .fc-content {
+    cursor: pointer;
+  }
+}

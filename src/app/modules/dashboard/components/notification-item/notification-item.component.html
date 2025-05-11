@@ -1,0 +1,12 @@
+<div fxLayout="row" fxLayoutAlign="start start" class="notification-item">
+  <div fxFill fxFlex="20" fxLayout="column" fxLayoutAlign="center center">
+    <app-entity-link [data]="'agent:' + notification?.from" [showAgentName]="false"></app-entity-link>
+  </div>
+  <div fxFill fxFlex="70" fxLayout="column" fxLayoutAlign="center start">
+    <!-- {{notification?.notificationMessage}} -->
+    <p (click)="onClickNotification(notification)">{{notification?.notifTitle}}</p>
+    <p class="notification-date p-pt-1">{{notification?.date | date : 'EEEE, MMMM d, y @ h:mm:ss a'}}</p>
+  </div>
+  <div>
+  </div>
+</div>

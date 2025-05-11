@@ -1,0 +1,25 @@
+<app-modal [header]="'Schedule Appointment Form'" [styleClass]="'modal-lg'" [minWidth]="'40vw'">
+  <div class="p-grid">
+    <div [ngClass]="{'p-col-7': isMember, 'p-col-12': !isMember}" >
+      <form [formGroup]="scheduleAppointmentForm">
+        <app-schedule-appointment-form
+          [formGroupValue]="scheduleAppointmentForm"
+          [availableTimeSlot]="availableTimeSlot"
+          [isMember]="isMember"
+          [listing]="listing"
+        ></app-schedule-appointment-form>
+      </form>
+    </div>
+    <div class="p-col-5"  *ngIf="isMember">
+      <app-day-calendar-view
+        [date]="scheduleAppointmentForm.controls['appointmentDate'].value"
+        [takenTimeSlot]="takenTimeSlot"
+      ></app-day-calendar-view>
+    </div>
+  </div>
+  <ng-template #modalFooter>
+    <button mat-raised-button color="primary" (click)="onScheduleAppointment()" [disabled]="scheduleAppointmentForm.invalid">Schedule</button>
+    <button mat-raised-button mat-dialog-close>Cancel</button>
+  </ng-template>
+</app-modal>
+<app-dialog></app-dialog>

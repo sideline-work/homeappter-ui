@@ -1,0 +1,10 @@
+<div fxFill fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="1px">
+  <img alt="logo" *ngIf="member?.photo" [src]="member?.photo" class="profile-summary-avatar">
+  <img alt="logo" *ngIf="!member?.photo" src="assets/images/blank-profile-circle.png" class="profile-summary-avatar">
+  <!-- <h1 class="mat-body-strong">{{member?.memberName}}</h1> -->
+  <p class="p-text-bold mat-h1 p-pt-4">
+    {{member?.fullname}}
+  </p>
+  <!-- <p class="mat-h3">{{member?.phoneNumber}}</p>
+  <p class="mat-h3">{{member?.email}}</p> -->
+</div>

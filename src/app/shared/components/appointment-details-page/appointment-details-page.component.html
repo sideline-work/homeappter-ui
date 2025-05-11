@@ -1,0 +1,27 @@
+<p-sidebar
+  [(visible)]="visible"
+  position="right"
+  [style]="{width:'80vw'}"
+  appendTo="body"
+  [showCloseIcon]="false"
+  [dismissible]="false"
+  (onHide)="onHide()"
+  [blockScroll]="true"
+  [baseZIndex]="10000"
+  styleClass="showing-page-sidebar">
+  <div fxLayout="row" fxLayoutAlign="space-between center"  class="p-px-3">
+    <h2 class="mat-title ">Appointment Details</h2>
+    <div align="end" class="p-mb-4">
+      <button
+        mat-raised-button
+        color="warn"
+        (click)="onCancelAppointment()"
+        *ngIf="(appointment.appointmentStatus == 'REQUESTED' || appointment.appointmentStatus == 'CONFIRMED') && (ROLES.MEMBER | hasRole)">
+       Cancel Appointment</button>
+      <button mat-raised-button (click)="onClose()" class="p-ml-3">Close</button>
+    </div>
+  </div>
+  <div class="listing-page-form p-p-0">
+    <app-appointment-details-form [appointment]="appointment" [showingInstruction]="showingInstruction"    [(remarks)]="remarks"></app-appointment-details-form>
+  </div>
+</p-sidebar>

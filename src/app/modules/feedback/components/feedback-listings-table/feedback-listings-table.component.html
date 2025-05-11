@@ -1,0 +1,43 @@
+<app-table
+  [table]="table"
+  [paginator]="true"
+  [rows]="6"
+  [denseCell]="true"
+  (onRowSelect)="onRowSelect($event)"
+  selectionMode="single"
+  caption="Appointments"
+>
+  <ng-template #showingDateTimeTemplate let-row="row">
+    <td>
+      <p>{{row?.appointmentInfo?.date | date : 'EEEE - MMMM d, yyyy'}}</p>
+      <p class="mat-h4">
+        {{getDate(row?.appointmentInfo?.date, row?.appointmentInfo?.startTime) | date : 'h:mm a'}} -
+        {{getDate(row?.appointmentInfo?.date, row?.appointmentInfo?.endTime) | date : 'h:mm a'}}
+      </p>
+    </td>
+  </ng-template>
+  <ng-template #listingDetailsTemplate let-row="row">
+    <td>
+      <p class="p-text-bold">{{row?.appointmentInfo?.fullAddress}}</p>
+      <p>{{row?.appointmentInfo?.price | currency }}, ID: {{row?.appointmentInfo?.listingId}}</p>
+    </td>
+  </ng-template>
+  <ng-template #agentDetailsTemplate let-row="row">
+    <td>
+      <p class="p-text-bold">{{row?.appointmentInfo?.listingAgent}}</p>
+      <p><i class="pi pi-envelope p-mr-2"></i>
+         {{row?.appointmentInfo?.agentEmail}}
+      </p>
+      <p><i class="fa fa-building p-mr-2"></i>
+        {{row?.appointmentInfo?.office}}
+      </p>
+    </td>
+  </ng-template>
+  <ng-template #thumbnailTemplate let-row="row">
+    <td>
+      <img [src]="row?.appointmentInfo?.thumbnail" class="feedback-listing-thumbnail" appImgFallback="assets/images/no-image.png">
+    </td>
+  </ng-template>
+</app-table>
+
+

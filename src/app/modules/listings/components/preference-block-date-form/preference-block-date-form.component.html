@@ -1,0 +1,90 @@
+<form [formGroup]="formGroupValue" *ngIf="formGroupValue">
+  <div class="p-field">
+    <label class="p-text-bold">Date</label>
+    <p-calendar
+      [minDate]="today"
+      class="form-control"
+      styleClass="form-control"
+      formControlName="dateRange"
+      placeholder="Select a specific date or range"
+      selectionMode="range"
+      [showButtonBar]="true"
+      [readonlyInput]="true"
+      [showIcon]="true"
+      inputId="range"
+      appendTo="body"
+      pTooltip="{{ f['dateRange'].errors | formErrors: 'dateRange'}}"
+      tooltipStyleClass="error-tooltip"
+      [tooltipDisabled]="!(f['dateRange'].invalid && f['dateRange'].touched)"
+      [class.has-error]="f['dateRange'].invalid && f['dateRange'].touched"
+    >
+    </p-calendar>
+  </div>
+  <div class="p-field">
+    <label class="p-text-bold">Time</label>
+    <div class="p-fluid p-formgrid p-grid">
+      <div class="p-field p-col-6 p-md-6">
+        <app-calendar
+            formControlNameValue="startTime"
+            placeholder="Start Time"
+            [timeOnly]="true"
+            [formGroup]="formGroupValue"
+            [showButtonBar]="true"
+            [readonlyInput]="false"
+            class="form-control"
+            appendTo="body"
+            hourFormat="12"
+            pTooltip="{{
+              f['startTime'].errors ||
+                (fgErrors | formErrorsFilter: 'startTimeGreaterThanEndTime')
+                | formErrors: ['Start Time', 'End Time']
+            }}"
+            tooltipStyleClass="error-tooltip"
+            [tooltipDisabled]="
+              !(
+                (f['startTime'].invalid || fgErrors?.startTimeGreaterThanEndTime) &&
+                f['startTime'].touched
+              )
+            "
+            [styleClass]="{
+              'has-error':
+                (f['startTime'].invalid || fgErrors?.startTimeGreaterThanEndTime) &&
+                f['startTime'].touched
+            }"
+          >
+          </app-calendar>
+      </div>
+      <div class="p-field p-col-6 p-md-6">
+        <app-calendar
+            formControlNameValue="endTime"
+            placeholder="End Time"
+            [timeOnly]="true"
+            [formGroup]="formGroupValue"
+            [showButtonBar]="true"
+            [readonlyInput]="false"
+            class="form-control"
+            appendTo="body"
+            hourFormat="12"
+            pTooltip="{{
+              (f['endTime'].errors | formErrors: 'endTime') ||
+                ((fgErrors | formErrorsFilter: 'startTimeGreaterThanEndTime')
+                | formErrors: ['Start Time', 'End Time'])
+            }}"
+            tooltipStyleClass="error-tooltip"
+            [tooltipDisabled]="
+              !(
+                (f['endTime'].invalid || fgErrors?.startTimeGreaterThanEndTime) &&
+                f['endTime'].touched
+              )
+            "
+            [styleClass]="{
+              'has-error':
+                (f['endTime'].invalid || fgErrors?.startTimeGreaterThanEndTime) &&
+                f['endTime'].touched
+            }"
+          >
+          </app-calendar>
+      </div>
+    </div>
+  </div>
+</form>
